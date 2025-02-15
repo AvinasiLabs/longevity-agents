@@ -1,0 +1,17 @@
+---
+
+llm_config:
+  client_type: openai
+  llm_token: !env ${AIMLAPI_TOKEN}
+  llm_uri: https://api.aimlapi.com/
+  llm_model: "mistralai/Mixtral-8x22B-Instruct-v0.1"
+
+
+embedding_config:
+  api_key: !env ${AIMLAPI_TOKEN}
+  model: text-embedding-3-large
+  base_url: https://api.aimlapi.com/
+  dimensions: 3072
+  buffer_size: 1000
+  accept_threshold: 0.78
+  reject_threshold: 0.6

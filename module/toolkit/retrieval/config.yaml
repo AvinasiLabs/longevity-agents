@@ -1,0 +1,10 @@
+---
+
+host: !env ${RETRIEVAL_HOST}
+port: !env ${RETRIEVAL_PORT}
+proxy: 
+  is_used: false
+api_map: 
+  crypto_knowledge: /v1/retrieve/vector/query
+  embedding: /v1/retrieve/vector/embedding
+  store_news: /v1/retrieve/vector/store_news

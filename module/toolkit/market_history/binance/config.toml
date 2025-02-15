@@ -1,0 +1,27 @@
+[api]
+spot_base = 'https://api.binance.com'
+fapi_base = 'https://fapi.binance.com'
+dapi_base = 'https://dapi.binance.com'
+spot_klines = '/api/v3/klines'
+fapi_klines = '/fapi/v1/klines'
+
+[data_setting]
+fields = [
+    'open_time',
+    'open',
+    'high',
+    'low',
+    'close',
+    'volume',
+    'close_time',
+    'quote_volume',
+    'count',
+    'taker_buy_volume',
+    'taker_buy_quote_volume',
+    'ignore'
+]
+float_fields = ['open',	'high', 'low', 'close', 'volume', 'quote_volume', 'count', 'taker_buy_volume', 'taker_buy_quote_volume']
+keep_fields = ['open_time', 'open', 'close', 'high', 'low', 'volume']
+mpf_fields = ['Datetime', 'Open', 'Close', 'High', 'Low', 'Volume']
+before_second = 600
+after_second = 7200
