@@ -22,7 +22,9 @@ class SerpApi:
         }
 
         results = await asyncio.to_thread(serpapi.search, params)
-        organic_results = results["organic_results"]
+        organic_results = results.get("organic_results", None)
+        if not organic_results:
+            return ''
         snippet_template = '{}. {} - {}'
         agg_results = ''
         for i, res in enumerate(organic_results):

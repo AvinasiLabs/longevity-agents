@@ -166,3 +166,7 @@ cython_debug/
 
 # local dev
 dev/
+
+# logs
+logs/
+nohup.out

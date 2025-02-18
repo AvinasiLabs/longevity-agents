@@ -36,7 +36,7 @@ STORAGE = dict()
 async def reset_session(reset_sess: ResetSession):
     sess_id = reset_sess.session_id
     if not sess_id:
-        sess_id = ID_GEN.generate_id()
+        sess_id = str(ID_GEN.generate_id())
     STORAGE[sess_id] = BryanChatbot()
     return {
         'status_code': 200,

@@ -7,12 +7,12 @@ from pydantic import BaseModel, ConfigDict, Field
 class BaseRequest(BaseModel):
     model_config: ConfigDict = ConfigDict(extra="forbid")
 
-    session_id: int
+    session_id: str
 
 
 # Request BaseModel class
 class ResetSession(BaseRequest):
-    session_id: int = None
+    session_id: str = None
 
 
 class SessionChat(BaseRequest):

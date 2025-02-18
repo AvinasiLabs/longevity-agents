@@ -20,7 +20,7 @@ from views.chatbot import router as chatbot_router
 # API
 app = FastAPI()
 
-app.include_router(chatbot_router, prefix='/chatbots', tags=['chatbots'])
+app.include_router(chatbot_router, prefix='/api/chatbots', tags=['chatbots'])
 
 
 @app.get("/test_get")
@@ -30,4 +30,4 @@ async def test_get():
 
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=20770, workers=1)
+    uvicorn.run("api:app", host="0.0.0.0", port=8002, workers=1)
