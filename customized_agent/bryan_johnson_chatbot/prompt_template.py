@@ -142,37 +142,3 @@ Final Answer:
     tools: str
     tool_names: list
 
-
-# class SolveQuestion(BaseTemplate):
-#     _stop = ["Observation:"]
-#     _template = f"""It is {datetime.now(tz=zoneinfo.ZoneInfo("US/Eastern")).strftime("%Y-%m-%d %H:%M:%S")} US/Eastern now.
-# The user asked you the following question:
-
-# [Question]
-# {{question}}
-
-# [Bryan Johnson Knowledge Base Reference]
-# {{bryan_ref}}
-
-# You have access to the following tools:
-
-# {{tools}}
-    
-# Use the following format, stop when Final Answer generated:
-
-# Question: ......
-# Thought: ......
-# Action: the action to take, should be one of {{tool_names}} if it needed. You can skip this and give Final Answer directly.
-# Action Input: the input to the action, must align with tool's input rule description, in JSON format
-# Observation: ......
-# ... (this Thought/Action/Action Input/Observation can repeat N times)
-
-# Final Thought: <Your final thought here>
-
-# Final Answer: 
-# <Your final answer here>"""
-    
-#     question: str
-#     bryan_ref: str
-#     tools: str
-#     tool_names: list

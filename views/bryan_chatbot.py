@@ -19,7 +19,7 @@ router = APIRouter()
 
 # local module
 from customized_agent.bryan_johnson_chatbot.task import BryanChatbot
-from views.data_cls import ResetSession, SessionChat
+from views.schema import ResetSession, SessionChat
 from utils.logger import logger
 from utils.helpers import SnowflakeIDGenerator
 

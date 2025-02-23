@@ -14,13 +14,16 @@ from fastapi import FastAPI
 
 
 # local module
-from views.chatbot import router as chatbot_router
+from views.bryan_chatbot import router as bryan_router
+from views.peter_chatbot import router as peter_router
 
 
 # API
 app = FastAPI()
 
-app.include_router(chatbot_router, prefix='/api/chatbots', tags=['chatbots'])
+app.include_router(bryan_router, prefix='/api/chatbots', tags=['chatbots'])
+app.include_router(bryan_router, prefix='/api/bryan_chatbot', tags=['bryan_chatbot'])
+app.include_router(peter_router, prefix='/api/peter_chatbot', tags=['peter_chatbot'])
 
 
 @app.get("/test_get")
