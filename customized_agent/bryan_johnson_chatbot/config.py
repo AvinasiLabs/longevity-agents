@@ -36,5 +36,5 @@ TOPICS_PATH = {
     'Females': 'customized_agent/bryan_johnson_chatbot/assets/females.txt',
     'Introduction': 'customized_agent/bryan_johnson_chatbot/assets/introduction.txt',
     'Pregnancy': 'customized_agent/bryan_johnson_chatbot/assets/pregnancy.txt',
-    'General': 'customized_agent/bryan_johnson_chatbot/assets/protocol.txt'
+    'General': 'customized_agent/bryan_johnson_chatbot/assets/general.txt'
 }

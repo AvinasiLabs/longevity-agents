@@ -5,31 +5,31 @@ import copy
 # local module
 from base_agent.async_agent import AsyncAgent
 from base_agent.a_stream_agent import AStreamAgent
-from customized_agent.bryan_johnson_chatbot.prompt_template import (
+from customized_agent.peter_attia_chatbot.prompt_template import (
     QueryAnalysis,
     ReferenceTemplate,
     ToolCallingTemplate
 )
-from customized_agent.bryan_johnson_chatbot.config import (
+from customized_agent.peter_attia_chatbot.config import (
     ROUTER_CONFIG,
-    BRYAN_CONFIG,
+    PETER_CONFIG,
     TOPICS_PATH
 )
 from module.toolkit.search_tools.serp_api import SerpApi
 
 
-class BryanChatbot:
+class PeterChatbot:
     def __init__(self) -> None:
-        # Initiate Router and Bryan Chatbot agents
+        # Initiate Router and Peter Chatbot agents
         self.init_agent()
         # Initiate knowledge
         self.init_topic_ref()
-        self.full_history = [{'role': 'system', 'content': self.bryan.config.sys_prompt}]
-        self.lite_history = [{'role': 'system', 'content': self.bryan.config.sys_prompt}]
+        self.full_history = [{'role': 'system', 'content': self.peter.config.sys_prompt}]
+        self.lite_history = [{'role': 'system', 'content': self.peter.config.sys_prompt}]
 
 
     def init_agent(self):
-        self.bryan = AStreamAgent(BRYAN_CONFIG)
+        self.peter = AStreamAgent(PETER_CONFIG)
         # register search engine tool
         self.search_engine = SerpApi()
         params = {
@@ -38,7 +38,7 @@ class BryanChatbot:
                 "description": 'keywords in original question for google search, you may need optimize them for Google search to satisfy your demand. Must be dict. Search for general information and no add "site" parameter'
             }
         }
-        self.bryan.register_tool(
+        self.peter.register_tool(
             name="Search Engine",
             description="The Google search engine, you can use it to search information on the Internet if needed.",
             params=json.dumps(params),
@@ -47,7 +47,7 @@ class BryanChatbot:
         # TODO: register retriever tool
         
         self.router = AsyncAgent(ROUTER_CONFIG)
-        self.tool_caller = AStreamAgent(BRYAN_CONFIG)
+        self.tool_caller = AStreamAgent(PETER_CONFIG)
         self.tool_caller.register_tool(
             name="Search Engine",
             description="The Google search engine, you can use it to search information on the Internet if needed.",
@@ -78,10 +78,10 @@ class BryanChatbot:
         return label
 
     
-    async def bryan_answer(self, question:str, bryan_ref:str):
-        template = ReferenceTemplate(question=question, bryan_ref=bryan_ref)
+    async def peter_answer(self, question:str, ref:str):
+        template = ReferenceTemplate(question=question, ref=ref)
         prompt = template.format_template()
-        resp = await self.bryan.chat_once(prompt, temperature=self.bryan.config.temperature)
+        resp = await self.peter.chat_once(prompt, temperature=self.peter.config.temperature)
         result = ''
         async for chunk in resp:
             choices = chunk.choices
@@ -95,11 +95,11 @@ class BryanChatbot:
         
 
     async def tool_answer(self, question:str, history:list):
-        tool_names = list(self.bryan.toolkit.keys())
+        tool_names = list(self.peter.toolkit.keys())
         result = self.tool_caller.tool_call_chat(
             question=question,
             history=history,
-            temperature=self.bryan.config.temperature,
+            temperature=self.peter.config.temperature,
             tool_names=tool_names
         )
         async for chunk in result:
@@ -130,7 +130,7 @@ class BryanChatbot:
                     yield chunk
         else:
             self.full_history.append({'role': 'user', 'content': question})
-            result = self.bryan_answer(question, topic_ref)
+            result = self.peter_answer(question, topic_ref)
             async for chunk in result:
                 if chunk is not None:
                     yield chunk
@@ -147,10 +147,11 @@ if __name__ == '__main__':
 
 
     async def main():
-        chatbot = BryanChatbot()
+        chatbot = PeterChatbot()
+        question = 'Who are you? What can you do?'
         # question = 'I want to control my Uric acid.'
         # question = 'Improve the sleep quality'
-        question = 'How is the weather in London now?'
+        # question = 'How is the weather in London now?'
         print(question)
         res = chatbot.pipe(question)
         async for chunk in res:
