@@ -21,9 +21,8 @@ from views.peter_chatbot import router as peter_router
 # API
 app = FastAPI()
 
-app.include_router(bryan_router, prefix='/api/chatbots', tags=['chatbots'])
-app.include_router(bryan_router, prefix='/api/bryan_chatbot', tags=['bryan_chatbot'])
-app.include_router(peter_router, prefix='/api/peter_chatbot', tags=['peter_chatbot'])
+app.include_router(bryan_router, prefix='/api/chatbots/bryan_johnson', tags=['bryan_chatbot'])
+app.include_router(peter_router, prefix='/api/chatbots/peter_attia', tags=['peter_chatbot'])
 
 
 @app.get("/test_get")
