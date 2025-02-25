@@ -45,7 +45,7 @@ async def reset_session(reset_sess: ResetSession):
     }
 
 
-@router.post('/peter_attia')
+@router.post('/chat')
 async def bryan_chat(sess_chat: SessionChat):
     sess_id = sess_chat.session_id
     if sess_id not in STORAGE:
