@@ -40,7 +40,8 @@ async def reset_session(reset_sess: ResetSession):
     STORAGE[sess_id] = BryanChatbot()
     return {
         'status_code': 200,
-        'result': sess_id
+        'result': sess_id,
+        'message': "This agent is developed using Bryan Johnson's publicly available Blueprint Protocol and is not affiliated with or endorsed by Bryan Johnson."
     }
 
 
