@@ -17,7 +17,6 @@ The **Longevity-Agents** is an asynchronous multi-agent framework built to provi
   - **Web Search**: Retrieve up-to-date information from the web.
   - **Domain Knowledge Retrieval (RAG)**: Utilize domain-specific knowledge for context-aware reasoning.
   - **Code Execution**: Execute code to perform custom health-related calculations, models, or simulations.
-  - **Market Information**: Access real-time data related to the health, wellness, and longevity markets.
 
 - **Longevity Expert Agents**: A set of specialized agents designed to provide advice on longevity based on cutting-edge research and real-time health data.
 
