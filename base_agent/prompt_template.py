@@ -37,7 +37,12 @@ Use the following format:
 Question: the input question you must answer
 Thought: you should always think about what to do
 Action: the action to take, should be one of {tool_names} if it needed. You can skip this and give Final Answer directly.
-Action Input: the input to the action, must align with tool's input rule description, kwargs in JSON format
+Action Input: the input to the action, must align with tool's input rule description, kwargs in JSON format:
+```JSON
+{{
+    key: value
+}}
+```
 Observation: the result of the action
 ... (this Thought/Action/Action Input/Observation can repeat N times)
 Thought: I now know the final answer

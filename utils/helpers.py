@@ -10,16 +10,86 @@
 
 
 import os
+import heapq
 import yaml
 import hashlib
 import asyncio
 import threading
 import time
 import base64
+import aiohttp
+import ssl
+from collections import OrderedDict
 from dotenv import load_dotenv
+from typing import Union, Iterator, List, Tuple, AsyncGenerator
+
+
+# Local modules
+from utils.logger import logger
 
 
 load_dotenv()
+
+
+async def fetch(
+    url:str, 
+    data:Union[dict, aiohttp.FormData], 
+    cls_name:str, 
+    timeout:float, 
+    session_kw:dict=None, 
+    request_kw:dict=None,
+    semaphore:asyncio.Semaphore=None,
+    return_type:str='json'
+):
+    session_kw = session_kw or dict()
+    request_kw = request_kw or dict()
+    ssl_context = ssl.create_default_context()
+    ssl_context.check_hostname = False
+    ssl_context.verify_mode = ssl.CERT_NONE
+    connector = aiohttp.TCPConnector(ssl=ssl_context)
+    timeout = aiohttp.ClientTimeout(total=timeout)
+    semaphore = semaphore or asyncio.Semaphore(1)
+    async with semaphore:
+        async with aiohttp.ClientSession(connector=connector, timeout=timeout, **session_kw) as session:
+            try:
+                if isinstance(data, dict):
+                    request_kw.update({
+                        'url': url,
+                        'json': data
+                    })
+                else:
+                    request_kw.update({
+                        'url': url,
+                        'data': data
+                    })
+                async with session.post(**request_kw) as resp:
+                    if resp.status == 200:
+                        if return_type == 'json':
+                            result = await resp.json()
+                        elif return_type == 'text':
+                            result = await resp.text()
+                        else:
+                            raise ValueError(f'Unpupported return_type: {return_type}')
+                        return result
+                    else:
+                        raise ValueError(f'{cls_name} 请求失败： {resp.status}')
+            except asyncio.TimeoutError as e:
+                logger.info(f'{cls_name} 请求超时')
+                raise e
+            except aiohttp.ClientError as e:
+                logger.info(f"{cls_name} 请求错误")
+                raise e
+            
+
+def stream_sort_with_indices(stream: Iterator[int]) -> List[int]:
+    min_heap: List[Tuple[int, int]] = []  # (value, index)
+    indexed_list = list(stream)
+    
+    for idx, num in enumerate(indexed_list):
+        heapq.heappush(min_heap, (num, idx))  # Insert (value, index) into heap with sort
+    
+    sorted_indices = [heapq.heappop(min_heap)[1] for _ in range(len(min_heap))]
+    return sorted_indices
 
 
 # metaclass singleton used for singleton instance
@@ -113,6 +183,68 @@ def bytes_to_b64(bytes_data:bytes, encoding="utf-8"):
 
 
 generate_md5 = lambda text: hashlib.md5(text.encode('utf-8')).hexdigest()
+
+
+async def process_generators(*generators: AsyncGenerator) -> AsyncGenerator:
+    """An async generator that yields values grouped by their respective sub-generators."""
+    queue = asyncio.Queue()
+    pending = OrderedDict()  # Preserves insertion order to handle generators in FIFO manner
+    done = set()
+    current = None
+    active_tasks = len(generators)
+    emitted_done = set()  # Track which generators have had their completion signaled
+
+    async def consume_generator(index: int, gen: AsyncGenerator):
+        async for item in gen:
+            await queue.put((index, item))
+        await queue.put((index, None))
+
+    tasks = [asyncio.create_task(consume_generator(i, gen)) for i, gen in enumerate(generators)]
+
+    try:
+        while active_tasks > 0:
+            index, value = await queue.get()
+
+            if value is None:
+                active_tasks -= 1
+                done.add(index)
+                # If the current generator finishes, signal completion and switch to next
+                if index == current:
+                    if index not in emitted_done:
+                        yield current, None
+                        emitted_done.add(index)
+                    current = None  # Reset to allow picking next generator
+            else:
+                if index not in pending:
+                    pending[index] = []
+                pending[index].append(value)
+
+            # If no current generator, select the next available
+            if current is None:
+                for key in list(pending.keys()):
+                    if key in done:
+                        # Emit pending items and completion for done generators
+                        current = key
+                        for item in pending.pop(current):
+                            yield current, item
+                        if current not in emitted_done:
+                            yield current, None
+                            emitted_done.add(current)
+                        current = None
+                    else:
+                        # Start processing this generator
+                        current = key
+                        for item in pending.pop(current):
+                            yield current, item
+                        break
+
+            queue.task_done()
+    finally:
+        # Ensure all tasks are cancelled on exit to prevent hangs
+        for task in tasks:
+            task.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
+        await queue.join()
 
 
 class SnowflakeIDGenerator:
@@ -220,4 +352,7 @@ class AsyncDict:
 
 
 if __name__ == "__main__":
-    ...
+    doi = '10.1111/apha.13074'
+    name = 'Autophagy—A key pathway for cardiac health and longevity'
+    print(generate_md5(name))
+
