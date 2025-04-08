@@ -49,10 +49,13 @@ class RetrievalConfig(BaseSettings):
         extra="ignore", env_file=".env", env_prefix="retrieval_"
     )
 
-    proxy: ProxyConfig
-    host: str
-    port: int
-    api_map: dict
+    endpoint: str
+    retrieve_api: str
+    embedding_api: str = ''
+    semaphore: int = 200
+    max_workers: int = 4
+    threshold: float = 0.8
+    topk: int = 10
 
 
 class MongoConfig(BaseSettings):
@@ -74,6 +77,12 @@ class SerpapiConfig(BaseSettings):
     location: str    # Parameter defines from where you want the search to originate.
     gl: str = Field('us', description="Parameter defines the country to use for the Google search. It's a two-letter country code. (e.g., us for the United States, uk for United Kingdom, or fr for France). ")
     hl: str = Field('en', description="Parameter defines the language to use for the Google search. It's a two-letter language code. (e.g., en for English, es for Spanish, or fr for French).")
+
+
+class TaskConfig(BaseSettings):
+    model_config = SettingsConfigDict(
+        extra="ignore", env_file=".env", env_prefix="task_"
+    )
 
 
 if __name__ == "__main__":

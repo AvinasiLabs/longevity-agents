@@ -193,15 +193,17 @@ class AStreamAgent:
                         temperature=temperature,
                         stream=True
                     )
+                    flag = False
                     async for chunk in response:
                         choices = chunk.choices
                         if choices:
                             delta = choices[0].delta.content
                             if delta:
                                 result += delta  # Accumulate result
-                            if re.findall(r'Final Answer:[\s\S]+', result, re.I):
+                            if flag or re.findall(r'Final Answer[\s\S]+\n', result, re.I):
+                                flag = True
                                 yield delta
-                            elif re.findall(r'Action Input\: {"query"\: [\s\S]+?}$', result, re.I):
+                            elif re.findall(r'Action Input[\s\S]+```json[\s\S]+?```', result, re.I):
                                 obs = ''
                                 for attempt in range(5):
                                     try:

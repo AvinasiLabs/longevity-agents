@@ -16,6 +16,7 @@ from fastapi import FastAPI
 # local module
 from views.bryan_chatbot import router as bryan_router
 from views.peter_chatbot import router as peter_router
+from views.paper_chatbot import router as paper_router
 
 
 # API
@@ -23,6 +24,7 @@ app = FastAPI()
 
 app.include_router(bryan_router, prefix='/api/chatbots/bryan_johnson', tags=['bryan_chatbot'])
 app.include_router(peter_router, prefix='/api/chatbots/peter_attia', tags=['peter_chatbot'])
+app.include_router(paper_router, prefix='/api/chatbots/longevity_paper', tags=['longevity_paper'])
 
 
 @app.get("/test_get")
@@ -32,4 +34,4 @@ async def test_get():
 
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=8002, workers=1)
+    uvicorn.run("api:app", host="0.0.0.0", port=8008, workers=1)

@@ -308,7 +308,7 @@ if __name__ == "__main__":
 
     # # 查询文档
     # query = {
-    #     "match": {"answer": "制度考核"}
+    #     "match": {"answer": "longevity"}
     # }
     # res = es.search_documents(index_name, query=query)
     # print(res)
@@ -323,7 +323,7 @@ if __name__ == "__main__":
     #     query = {
     #         'bool': {
     #             'must': [
-    #                 {'term': {'file_name': 'GJB-2809A-2005 部队油库加油站设计与施工规范.pdf'}},
+    #                 {'term': {'file_name': 'sample.pdf'}},
     #                 {'term': {'index': i}},
     #                 {'term': {'chunk_type': 'text'}}
     #             ]
