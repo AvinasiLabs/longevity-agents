@@ -54,7 +54,7 @@ class AsyncAgent:
         self.messages = [dict(role="system", content=self.config.sys_prompt)]
         self.toolkit = dict()
 
-    def haddle_message(
+    def handle_message(
         self, content: str, is_received: bool, callback: Callable = None
     ) -> Message:
         # TODO: add callback function
@@ -64,7 +64,7 @@ class AsyncAgent:
         return messages
 
     async def chat_once(self, content, temperature=1.0, stop=None):
-        messages = self.haddle_message(content, is_received=True)
+        messages = self.handle_message(content, is_received=True)
         response = await self.client.chat.completions.create(
             model=self.model,
             messages=messages,
@@ -172,7 +172,7 @@ class AsyncAgent:
             )
             prompt = template.format_template()
             logger.debug(prompt)
-            messages = self.haddle_message(prompt, is_received=True)
+            messages = self.handle_message(prompt, is_received=True)
             for _ in range(5):
                 try:
                     response = await self.client.chat.completions.create(
@@ -242,7 +242,7 @@ class AsyncAgent:
             )
             prompt = template.format_template()
             logger.debug(prompt)
-            messages = self.haddle_message(prompt, is_received=True)
+            messages = self.handle_message(prompt, is_received=True)
             response = await self.client.chat.completions.create(
                 model=self.model,
                 messages=messages,

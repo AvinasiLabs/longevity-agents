@@ -18,7 +18,7 @@ class PaperTaskConfig(TaskConfig):
 
 TASK_CONFIG = PaperTaskConfig(
     domain='longevity_paper_2504',
-    image_endpoint='http://10.11.148.250:8002',
+    image_endpoint='https://avinasi.ai',
     retrieval_keep=5
 )
 
