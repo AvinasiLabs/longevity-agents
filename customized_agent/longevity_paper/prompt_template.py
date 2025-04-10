@@ -80,7 +80,7 @@ You have obtained the following longevity paper snippets as reference:
 
 ## Instructions:
 - Keep answer concise and precise.
-- Must answer with image's index if its information is helpful. In the format:
+- Add image's index only if its information is helpful. In the format:
     Reference Image:
     <image>index</image>
 - Do not output content dosen't belong to the answer.

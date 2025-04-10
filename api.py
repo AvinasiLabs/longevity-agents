@@ -24,7 +24,7 @@ app = FastAPI()
 
 app.include_router(bryan_router, prefix='/api/chatbots/bryan_johnson', tags=['bryan_chatbot'])
 app.include_router(peter_router, prefix='/api/chatbots/peter_attia', tags=['peter_chatbot'])
-app.include_router(paper_router, prefix='/api/chatbots/longevity_paper', tags=['longevity_paper'])
+app.include_router(paper_router, prefix='/api/chatbots/v2/longevity_paper', tags=['longevity_paper'])
 
 
 @app.get("/test_get")

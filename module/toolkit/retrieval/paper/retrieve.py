@@ -77,7 +77,7 @@ class PaperRetrieve:
             file_md5 = generate_md5(Path(file_name).stem)
             raw_urls = re.findall(r"images/[a-fA-F0-9]{64}\.jpg", text)
             img_md5s = re.findall(r"images/([a-fA-F0-9]{64})\.jpg", text)
-            new_urls = [f'{endpoint}/api/v1/storage/image?domain={domain}&file={file_md5}&image={image_md5}' for image_md5 in img_md5s]
+            new_urls = [f'{endpoint}/v1/storage/image?domain={domain}&file={file_md5}&image={image_md5}' for image_md5 in img_md5s]
             for i, url in enumerate(new_urls):
                 url_sub = f'<image>{index}</image>'
                 text = re.sub(raw_urls[i], url_sub, text)

@@ -138,10 +138,11 @@ class PaperChatbot:
             temperature=self.tool_caller.config.temperature,
             tool_names=tool_names
         )
+        content = ''
         async for chunk in result:
+            content = f'{content}{chunk}'
             yield chunk
-            result = f'{result}{chunk}'
-        self.full_history.append({'role': 'assistant', 'content': result})
+        self.full_history.append({'role': 'assistant', 'content': content})
     
 
     async def pipe(self, question):
@@ -193,24 +194,4 @@ class PaperChatbot:
 
 
 if __name__ == '__main__':
-    import asyncio
-
-
-    async def main():
-        chatbot = PaperChatbot()
-        question = "How to evaluate the brain's age?"
-        # question = 'I want to control my Uric acid.'
-        # question = 'Improve the sleep quality'
-        # question = 'How is the weather in London now?'
-        print(question)
-
-        answer = ''
-        res = chatbot.pipe(question)
-        async for chunk in res:
-            if chunk:
-                answer = f'{answer}{chunk}'
-                print(chunk, end='')
-        with open('/root/rag/longevity-agents/dev/answer_1.md', 'w') as f:
-            f.write(answer)
-
-    asyncio.run(main())
+    ...
