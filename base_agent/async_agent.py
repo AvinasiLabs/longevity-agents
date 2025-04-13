@@ -63,6 +63,19 @@ class AsyncAgent:
         messages.append(message)
         return messages
 
+
+    async def chat_once_pure(self, messages, temperature=1.0, stop=None):
+        response = await self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            max_tokens=self.config.max_token,
+            temperature=temperature,
+            stop=stop,
+        )
+        result = response.choices[0].message.content
+        return result
+
+
     async def chat_once(self, content, temperature=1.0, stop=None):
         messages = self.handle_message(content, is_received=True)
         response = await self.client.chat.completions.create(

@@ -185,6 +185,9 @@ def bytes_to_b64(bytes_data:bytes, encoding="utf-8"):
 generate_md5 = lambda text: hashlib.md5(text.encode('utf-8')).hexdigest()
 
 
+generate_sha256 = lambda text: hashlib.sha256(text.encode('utf-8')).hexdigest()
+
+
 async def process_generators(*generators: AsyncGenerator) -> AsyncGenerator:
     """An async generator that yields values grouped by their respective sub-generators."""
     queue = asyncio.Queue()
