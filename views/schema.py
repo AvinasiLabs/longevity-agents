@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union, Literal, List
 from datetime import datetime, timezone, timedelta
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -18,3 +18,11 @@ class ResetSession(BaseRequest):
 class SessionChat(BaseRequest):
     question: str = ''
     file_bs64: str = None
+
+
+class UserRawData(BaseModel):
+    model_config: ConfigDict = ConfigDict(extra="forbid")
+
+    storage_type: Literal['minio', 'ipfs']
+    data_type: Literal['text', 'pdf', 'img']
+    data_path: str

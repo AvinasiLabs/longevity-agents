@@ -12,7 +12,19 @@
 from pathlib import Path
 from typing import Literal, Union, Optional, Dict, List
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import Field, SecretStr
+
+
+BASE_PATH = Path(__file__).parent.parent
+
+
+# Initiate cache directory
+CACHE = BASE_PATH.joinpath('.cache')
+
+
+# Initiate OCR cache directory
+OCR_CACHE = CACHE.joinpath('ocrs')
+OCR_CACHE.mkdir(parents=True, exist_ok=True)
 
 
 class AgentConfig(BaseSettings):
@@ -58,6 +70,26 @@ class RetrievalConfig(BaseSettings):
     topk: int = 10
 
 
+class OcrConfig(BaseSettings):
+    base_url: str
+    timeout: float = 3600
+    sema_process: int = 4  
+    ocr_cache: Path = OCR_CACHE
+
+
+class EmbeddingConfig(BaseSettings):
+    model_config = SettingsConfigDict(env_file='.env', extra='allow', env_prefix='emb_')
+
+    emb_type: Literal['restapi', 'openai'] = 'openai'
+    base_url: str
+    timeout: float = 1800
+    api: str = '/v1/embeddings'
+    semaphore: int = 16
+    model:str = ''
+    batch_size: int = 128
+    token: SecretStr = ''
+
+
 class MongoConfig(BaseSettings):
     model_config = SettingsConfigDict(
         extra="ignore", env_file=".env", env_prefix="mongo_"
@@ -66,6 +98,33 @@ class MongoConfig(BaseSettings):
     conn_str: str
     db_name: str
     coll_name: str
+
+
+class MinioConfig(BaseSettings):
+    model_config = SettingsConfigDict(env_file='.env', extra='ignore', env_prefix='minio_')
+
+
+    host: str
+    port: int
+    ak: SecretStr
+    sk: SecretStr
+    bucket: str = None
+    max_workers: int = 32
+
+
+class IPFSConfig(BaseSettings):
+    model_config = SettingsConfigDict(
+        extra="ignore", env_file=".env", env_prefix="ipfs_"
+    )
+
+    endpoint: str
+    semaphore: int = 4
+    timeout: int = 300
+    session_kw: dict = dict()
+
+
+class ShelveConfig(BaseSettings):
+    db_path: Path
 
 
 class SerpapiConfig(BaseSettings):

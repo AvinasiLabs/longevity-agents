@@ -1,0 +1,482 @@
+{
+    "Hematology": {
+        "Hemoglobin": {
+            "definition": "A protein in red blood cells that carries oxygen throughout the body.",
+            "explanation": "Hemoglobin measures the amount of oxygen-carrying protein in your blood, which is important for delivering oxygen to tissues and organs for energy and overall health."
+        },
+        "Total Leukocyte Count": {
+            "definition": "The total number of white blood cells in the blood, which help fight infections.",
+            "explanation": "Total leukocyte count indicates the body's defense against infections and inflammation, playing a key role in immune system function."
+        },
+        "Neutrophils": {
+            "definition": "A type of white blood cell that responds to bacterial infections and inflammation.",
+            "explanation": "Neutrophils measure the percentage of a specific white blood cell that helps the body fight infections, particularly bacterial ones."
+        },
+        "Lymphocyte": {
+            "definition": "A type of white blood cell involved in immune responses, such as fighting viruses and producing antibodies.",
+            "explanation": "Lymphocytes measure the percentage of white blood cells that support the immune system in defending against infections and diseases."
+        },
+        "Eosinophils": {
+            "definition": "A type of white blood cell that helps combat allergic reactions and parasitic infections.",
+            "explanation": "Eosinophils measure the percentage of white blood cells involved in responses to allergies and certain infections."
+        },
+        "Monocytes": {
+            "definition": "A type of white blood cell that helps clean up damaged cells and fight infections.",
+            "explanation": "Monocytes measure the percentage of white blood cells that play a role in immune defense and tissue repair."
+        },
+        "Basophils": {
+            "definition": "A type of white blood cell involved in inflammatory responses and allergic reactions.",
+            "explanation": "Basophils measure the percentage of white blood cells that contribute to the body's response to allergens and inflammation."
+        },
+        "Platelet Count": {
+            "definition": "The number of platelets in the blood, which are cell fragments that help with clotting to stop bleeding.",
+            "explanation": "Platelet count indicates the blood's ability to form clots and prevent excessive bleeding during injury."
+        },
+        "Total Rbc Count": {
+            "definition": "The total number of red blood cells in the blood, which transport oxygen from the lungs to the body's tissues.",
+            "explanation": "Total RBC count measures the oxygen-carrying capacity of the blood, essential for energy production and organ function."
+        },
+        "Hematocrit Value, Hct": {
+            "definition": "The proportion of blood volume occupied by red blood cells, indicating the blood's oxygen-carrying capacity.",
+            "explanation": "Hematocrit value reflects the balance of red blood cells in the blood, which is important for oxygen delivery and overall circulation."
+        },
+        "Mean Corpuscular Volume, Mcv": {
+            "definition": "The average size of red blood cells, which can indicate how well the body is producing these cells.",
+            "explanation": "MCV measures the average volume of red blood cells, helping to assess the health and maturity of these cells in oxygen transport."
+        },
+        "Mean Cell Haemoglobin, Mch": {
+            "definition": "The average amount of hemoglobin per red blood cell, related to the cell's oxygen-carrying efficiency.",
+            "explanation": "MCH indicates the hemoglobin content in individual red blood cells, which is crucial for effective oxygen delivery."
+        },
+        "Mean Cell Haemoglobin Con, Mchc": {
+            "definition": "The average concentration of hemoglobin in red blood cells, reflecting the cells' hemoglobin density.",
+            "explanation": "MCHC measures the concentration of hemoglobin within red blood cells, which affects their ability to carry oxygen."
+        },
+        "Fibrinogen Activity": {
+            "definition": "Fibrinogen is a protein in the blood that plays a key role in the clotting process, helping to form clots and stop bleeding.",
+            "explanation": "Fibrinogen activity helps assess the blood's ability to clot, which is important for maintaining normal blood flow and preventing excessive bleeding. Without a reference range, it's not possible to determine if this result is typical or not."
+        },
+        "G6PD": {
+            "definition": "Glucose-6-Phosphate Dehydrogenase (G6PD) is an enzyme that protects red blood cells from damage caused by certain substances or stresses.",
+            "explanation": "G6PD levels are significant for the health of red blood cells, as they help prevent oxidative damage. Without a reference range, it's unclear if this result falls within expected values."
+        }
+    },
+    "Body Composition": {
+        "Total Body Fat Percentage": {
+            "definition": "The proportion of total body weight that consists of fat, often assessed using methods like DXA scans to evaluate overall body composition.",
+            "explanation": "This measures the amount of fat relative to the total body weight, which can provide insights into body composition and potential health associations related to fat distribution."
+        },
+        "Total Mass": {
+            "definition": "The overall weight of the body, including fat, lean tissue, and bone.",
+            "explanation": "This represents the total body weight, which is a basic indicator of body composition and can be influenced by factors like muscle, fat, and bone mass."
+        },
+        "Fat Tissue": {
+            "definition": "The total amount of fat in the body, which includes essential and storage fat.",
+            "explanation": "This indicates the absolute mass of fat in the body, helping to assess fat levels that may relate to energy storage and metabolic health."
+        },
+        "Lean Tissue": {
+            "definition": "The non-fat components of the body, primarily including muscles, organs, and water.",
+            "explanation": "This measures the mass of lean body components, which are important for physical strength, metabolism, and overall function."
+        },
+        "Arms Total Fat Percentage": {
+            "definition": "The percentage of fat in the arms relative to the total mass of the arms.",
+            "explanation": "This assesses the fat proportion in the arms, which can reflect regional body composition and muscle-to-fat balance in the upper limbs."
+        },
+        "Arms Total Mass": {
+            "definition": "The combined weight of fat, lean tissue, and bone in both arms.",
+            "explanation": "This represents the overall mass of the arms, indicating the combined contributions of fat, muscle, and bone in this area."
+        },
+        "Arms Fat Mass": {
+            "definition": "The absolute amount of fat in both arms.",
+            "explanation": "This measures the fat content in the arms, which can be relevant for evaluating upper body fat distribution."
+        },
+        "Arms Lean Mass": {
+            "definition": "The non-fat mass in both arms, including muscles and other tissues.",
+            "explanation": "This indicates the lean components in the arms, which are key for strength and mobility."
+        },
+        "Arms BMC": {
+            "definition": "Bone Mineral Content in both arms, referring to the amount of minerals in the bones.",
+            "explanation": "This measures the mineral density in the arm bones, which can relate to bone health and strength."
+        },
+        "Right Arm Fat Percentage": {
+            "definition": "The percentage of fat in the right arm relative to its total mass.",
+            "explanation": "This evaluates the fat proportion in the right arm, helping to assess asymmetry or regional fat accumulation."
+        },
+        "Right Arm Total Mass": {
+            "definition": "The overall weight of the right arm, including fat, lean tissue, and bone.",
+            "explanation": "This represents the total mass of the right arm, providing insight into its composition."
+        },
+        "Right Arm Fat Mass": {
+            "definition": "The amount of fat in the right arm.",
+            "explanation": "This measures the fat content in the right arm, which can indicate local fat levels."
+        },
+        "Right Arm Lean Mass": {
+            "definition": "The non-fat mass in the right arm, such as muscles.",
+            "explanation": "This assesses the lean tissue in the right arm, important for arm strength."
+        },
+        "Right Arm BMC": {
+            "definition": "Bone Mineral Content in the right arm.",
+            "explanation": "This indicates the mineral content in the right arm's bones, relating to bone health."
+        },
+        "Left Arm Fat Percentage": {
+            "definition": "The percentage of fat in the left arm relative to its total mass.",
+            "explanation": "This measures the fat proportion in the left arm, useful for evaluating body symmetry."
+        },
+        "Left Arm Total Mass": {
+            "definition": "The overall weight of the left arm.",
+            "explanation": "This represents the total mass of the left arm."
+        },
+        "Left Arm Fat Mass": {
+            "definition": "The amount of fat in the left arm.",
+            "explanation": "This indicates fat levels in the left arm."
+        },
+        "Left Arm Lean Mass": {
+            "definition": "The lean tissue in the left arm.",
+            "explanation": "This measures non-fat mass in the left arm."
+        },
+        "Left Arm BMC": {
+            "definition": "Bone Mineral Content in the left arm.",
+            "explanation": "This assesses bone minerals in the left arm."
+        },
+        "Legs Total Fat Percentage": {
+            "definition": "The percentage of fat in both legs relative to their total mass.",
+            "explanation": "This evaluates fat in the legs, which can relate to lower body strength and mobility."
+        },
+        "Legs Total Mass": {
+            "definition": "The combined weight of both legs.",
+            "explanation": "This represents the total mass of the legs."
+        },
+        "Legs Fat Mass": {
+            "definition": "The fat mass in both legs.",
+            "explanation": "This measures fat in the legs."
+        },
+        "Legs Lean Mass": {
+            "definition": "The lean mass in both legs.",
+            "explanation": "This indicates lean tissue in the legs."
+        },
+        "Legs BMC": {
+            "definition": "Bone Mineral Content in both legs.",
+            "explanation": "This assesses bone minerals in the legs."
+        },
+        "Right Leg Fat Percentage": {
+            "definition": "The percentage of fat in the right leg.",
+            "explanation": "This measures fat proportion in the right leg."
+        },
+        "Right Leg Total Mass": {
+            "definition": "The total mass of the right leg.",
+            "explanation": "This represents the weight of the right leg."
+        },
+        "Right Leg Fat Mass": {
+            "definition": "The fat mass in the right leg.",
+            "explanation": "This indicates fat in the right leg."
+        },
+        "Right Leg Lean Mass": {
+            "definition": "The lean mass in the right leg.",
+            "explanation": "This measures lean tissue in the right leg."
+        },
+        "Right Leg BMC": {
+            "definition": "Bone Mineral Content in the right leg.",
+            "explanation": "This assesses bone minerals in the right leg."
+        },
+        "Left Leg Fat Percentage": {
+            "definition": "The percentage of fat in the left leg.",
+            "explanation": "This measures fat proportion in the left leg."
+        },
+        "Left Leg Total Mass": {
+            "definition": "The total mass of the left leg.",
+            "explanation": "This represents the weight of the left leg."
+        },
+        "Left Leg Fat Mass": {
+            "definition": "The fat mass in the left leg.",
+            "explanation": "This indicates fat in the left leg."
+        },
+        "Left Leg Lean Mass": {
+            "definition": "The lean mass in the left leg.",
+            "explanation": "This measures lean tissue in the left leg."
+        },
+        "Left Leg BMC": {
+            "definition": "Bone Mineral Content in the left leg.",
+            "explanation": "This assesses bone minerals in the left leg."
+        },
+        "Trunk Fat Percentage": {
+            "definition": "The percentage of fat in the trunk area relative to its total mass.",
+            "explanation": "This evaluates fat in the central body region, which can be associated with core strength and metabolic factors."
+        },
+        "Trunk Total Mass": {
+            "definition": "The overall mass of the trunk.",
+            "explanation": "This represents the weight of the trunk area."
+        },
+        "Trunk Fat Mass": {
+            "definition": "The fat mass in the trunk.",
+            "explanation": "This measures fat in the trunk."
+        },
+        "Trunk Lean Mass": {
+            "definition": "The lean mass in the trunk.",
+            "explanation": "This indicates lean tissue in the trunk."
+        },
+        "Trunk BMC": {
+            "definition": "Bone Mineral Content in the trunk.",
+            "explanation": "This assesses bone minerals in the trunk."
+        },
+        "Android Fat Percentage": {
+            "definition": "The percentage of fat in the android region (upper body, around the abdomen).",
+            "explanation": "This measures fat in the upper body area, which can relate to abdominal composition."
+        },
+        "Android Total Mass": {
+            "definition": "The total mass of the android region.",
+            "explanation": "This represents the weight of the upper body area."
+        },
+        "Android Fat Mass": {
+            "definition": "The fat mass in the android region.",
+            "explanation": "This indicates fat in the upper body."
+        },
+        "Android Lean Mass": {
+            "definition": "The lean mass in the android region.",
+            "explanation": "This measures lean tissue in the upper body."
+        },
+        "Android BMC": {
+            "definition": "Bone Mineral Content in the android region.",
+            "explanation": "This assesses bone minerals in the upper body."
+        },
+        "Gynoid Fat Percentage": {
+            "definition": "The percentage of fat in the gynoid region (lower body, around hips and thighs).",
+            "explanation": "This evaluates fat in the lower body area, which can relate to hip and thigh composition."
+        },
+        "Gynoid Total Mass": {
+            "definition": "The total mass of the gynoid region.",
+            "explanation": "This represents the weight of the lower body area."
+        },
+        "Gynoid Fat Mass": {
+            "definition": "The fat mass in the gynoid region.",
+            "explanation": "This indicates fat in the lower body."
+        },
+        "Gynoid Lean Mass": {
+            "definition": "The lean mass in the gynoid region.",
+            "explanation": "This measures lean tissue in the lower body."
+        },
+        "Gynoid BMC": {
+            "definition": "Bone Mineral Content in the gynoid region.",
+            "explanation": "This assesses bone minerals in the lower body."
+        },
+        "A/G Ratio": {
+            "definition": "The ratio of android fat to gynoid fat, indicating the distribution of fat between upper and lower body regions.",
+            "explanation": "This ratio helps assess fat distribution patterns, which can be associated with body composition balance."
+        },
+        "Leptin": {
+            "definition": "Leptin is a hormone produced by fat cells that plays a role in regulating energy balance, appetite, and metabolism, often linked to body fat levels in the context of body composition.",
+            "explanation": "Leptin helps signal to the body about energy stores and can influence hunger and weight management. In body composition analysis, it may relate to how fat mass affects overall metabolic health."
+        }
+    },
+    "Bone Health": {
+        "Bone Mineral Content": {
+            "definition": "Bone Mineral Content (BMC) measures the total amount of minerals, such as calcium, in the bones, providing an indication of overall bone mass.",
+            "explanation": "BMC is used to assess the quantity of minerals in bones, which can help evaluate bone strength and density. It is significant for understanding potential risks related to bone health."
+        },
+        "Z-Score": {
+            "definition": "Z-Score compares an individual's bone density to that of others of the same age, sex, and ethnicity, helping to assess bone health relative to peers.",
+            "explanation": "The Z-Score measures how your bone density compares to people of the same age group. A score within the reference range may suggest typical bone density for your age."
+        },
+        "BMD Head": {
+            "definition": "Bone Mineral Density (BMD) of the head measures the density of minerals in the bones of the head area, indicating the strength and health of those bones.",
+            "explanation": "BMD Head assesses the mineral density in the head bones, which is important for evaluating overall bone structure and potential fracture risk."
+        },
+        "BMD Arms": {
+            "definition": "Bone Mineral Density (BMD) of the arms measures the density of minerals in the arm bones, reflecting bone strength in that area.",
+            "explanation": "BMD Arms evaluates the mineral density in the arm bones, which can be significant for assessing bone health and mobility."
+        },
+        "BMD Legs": {
+            "definition": "Bone Mineral Density (BMD) of the legs measures the density of minerals in the leg bones, indicating bone strength and support for weight-bearing activities.",
+            "explanation": "BMD Legs assesses the mineral density in the leg bones, which is important for evaluating risks related to physical activity and bone fractures."
+        },
+        "BMD Trunk": {
+            "definition": "Bone Mineral Density (BMD) of the trunk measures the density of minerals in the torso bones, such as the spine and ribs, contributing to core stability.",
+            "explanation": "BMD Trunk evaluates the mineral density in the central body bones, which plays a key role in overall posture and protection of vital organs."
+        },
+        "BMD Ribs": {
+            "definition": "Bone Mineral Density (BMD) of the ribs measures the density of minerals in the rib bones, which protect the chest and lungs.",
+            "explanation": "BMD Ribs assesses the mineral density in the ribs, significant for respiratory function and overall skeletal integrity."
+        },
+        "BMD Spine": {
+            "definition": "Bone Mineral Density (BMD) of the spine measures the density of minerals in the spinal bones, essential for back health and mobility.",
+            "explanation": "BMD Spine evaluates the mineral density in the spine, which is crucial for maintaining posture and preventing back-related issues."
+        },
+        "BMD Pelvis": {
+            "definition": "Bone Mineral Density (BMD) of the pelvis measures the density of minerals in the pelvic bones, supporting the lower body and aiding in movement.",
+            "explanation": "BMD Pelvis assesses the mineral density in the pelvic area, important for weight-bearing and overall lower body stability."
+        },
+        "Young Adult T-Score Total": {
+            "definition": "T-Score compares bone density to that of a healthy young adult, used to assess bone health in relation to peak bone mass.",
+            "explanation": "The T-Score measures how your bone density compares to that of a young adult. It is significant for identifying potential bone density variations."
+        },
+        "Age-Matched Z-Score Total": {
+            "definition": "Age-Matched Z-Score compares bone density to that of individuals of the same age and background, helping to evaluate bone health relative to peers.",
+            "explanation": "This Z-Score assesses bone density in comparison to age-matched individuals. A score within the reference range may indicate typical bone health for your age group."
+        },
+        "Parathyroid Hormone": {
+            "definition": "A hormone produced by the parathyroid glands that helps regulate calcium levels in the blood and supports bone health by influencing bone resorption and formation.",
+            "explanation": "Parathyroid hormone plays a key role in maintaining bone density and calcium balance. An increase, as indicated by the result, might suggest it's higher than typical levels, which could potentially affect bone health, though this should be evaluated by a professional."
+        },
+        "Calcitonin": {
+            "definition": "A hormone produced by the thyroid gland that helps regulate calcium levels and may inhibit bone breakdown, contributing to bone health.",
+            "explanation": "Calcitonin assists in controlling calcium in the blood and protecting bone density by reducing bone resorption. A decrease, as shown in the result, might indicate it's lower than expected, which could have implications for bone maintenance."
+        }
+    },
+    "Metabolic Indicators": {
+        "Resting Metabolic Rate": {
+            "definition": "The amount of energy your body uses at rest to maintain basic functions like breathing and circulation.",
+            "explanation": "Resting Metabolic Rate measures the calories your body burns while at rest, which can help in understanding basic energy needs for daily functioning. It is significant for metabolic health as it relates to how efficiently your body uses energy, potentially influencing weight management and overall wellness."
+        },
+        "VAT Mass": {
+            "definition": "The mass of visceral adipose tissue, which is the fat stored around internal organs in the abdominal area.",
+            "explanation": "VAT Mass indicates the amount of internal fat, which is linked to metabolic processes and can play a role in overall body composition. Higher levels may be associated with general health considerations, though this is not a diagnosis."
+        },
+        "VAT Volume": {
+            "definition": "The volume of visceral adipose tissue, which refers to the space occupied by fat stored around internal organs.",
+            "explanation": "VAT Volume measures the size of internal fat deposits, which can be relevant to metabolic health and body composition. It is significant as it may reflect aspects of fat distribution in the body, potentially influencing general well-being."
+        },
+        "Anti-Thyroglobulin Antibody": {
+            "definition": "A measure of antibodies that target thyroglobulin, a protein in the thyroid gland, which can be related to metabolic processes involving thyroid function.",
+            "explanation": "This indicator assesses immune activity against thyroid components, which plays a role in metabolism by influencing hormone production and energy regulation."
+        },
+        "Reverse T3": {
+            "definition": "A form of thyroid hormone that can be converted from T4, potentially indicating how the body handles metabolic processes under stress or other conditions.",
+            "explanation": "This measures an inactive form of thyroid hormone that may affect energy metabolism by influencing how active thyroid hormones are utilized in the body."
+        },
+        "T3, Free": {
+            "definition": "The unbound, active form of triiodothyronine, a thyroid hormone that directly impacts metabolic rate and energy production.",
+            "explanation": "This indicator reflects the level of active thyroid hormone available to regulate metabolism, affecting functions like heart rate and temperature control."
+        },
+        "T3 Total/Free": {
+            "definition": "A ratio or combined measure of total and free triiodothyronine, indicating the overall availability of this thyroid hormone for metabolic activities.",
+            "explanation": "This assesses the balance of thyroid hormones that influence metabolism, helping to regulate energy use and bodily functions."
+        },
+        "Thyroid Peroxidase Antibody": {
+            "definition": "Antibodies against an enzyme in the thyroid gland, which can affect metabolic hormone production.",
+            "explanation": "This measures immune responses that may impact thyroid function and overall metabolism, including energy and weight regulation."
+        },
+        "T4": {
+            "definition": "Thyroxine, a thyroid hormone that serves as a precursor to more active forms and plays a key role in metabolic regulation.",
+            "explanation": "This indicator evaluates a hormone that helps control metabolism, influencing growth, development, and energy expenditure."
+        },
+        "T4, Free": {
+            "definition": "The unbound form of thyroxine, which is readily available for metabolic processes in the body.",
+            "explanation": "This measures the active thyroid hormone that supports metabolism, affecting how the body uses energy and maintains vital functions."
+        },
+        "TSH": {
+            "definition": "Thyroid-stimulating hormone, produced by the pituitary gland to regulate thyroid activity and metabolic functions.",
+            "explanation": "This indicator signals the thyroid to produce hormones that control metabolism, impacting energy levels and bodily processes."
+        },
+        "Aldosterone": {
+            "definition": "A hormone that helps regulate salt and water balance, which can influence metabolic processes like blood pressure and fluid management.",
+            "explanation": "This measures a hormone involved in maintaining electrolyte balance, which indirectly affects metabolism and overall energy regulation."
+        },
+        "DHEA-Serum": {
+            "definition": "Dehydroepiandrosterone in serum form, a hormone precursor that can influence metabolic and energy-related processes.",
+            "explanation": "This indicator assesses a hormone that may play a role in metabolism, energy production, and stress response."
+        },
+        "DHEA-Sulfate": {
+            "definition": "A sulfated form of DHEA, a hormone involved in metabolic functions and stress adaptation.",
+            "explanation": "This measures a hormone that supports metabolism and may affect energy levels and immune function."
+        },
+        "Cortisol": {
+            "definition": "A stress hormone that regulates metabolism, including how the body uses sugars, fats, and proteins.",
+            "explanation": "This indicator evaluates a hormone that influences metabolic responses to stress and energy distribution."
+        },
+        "Adenosine": {
+            "definition": "A compound involved in energy transfer and metabolic processes, such as cellular energy production.",
+            "explanation": "This measures a substance that plays a role in metabolism by aiding in energy metabolism and cellular functions."
+        },
+        "IGF-1": {
+            "definition": "Insulin-like growth factor 1, a hormone that promotes growth and metabolic activities like glucose uptake.",
+            "explanation": "This indicator assesses a hormone that influences metabolism, including muscle growth and energy utilization."
+        },
+        "Insulin": {
+            "definition": "A hormone that regulates blood sugar levels and metabolic processes related to energy storage and usage.",
+            "explanation": "This measures a hormone essential for metabolism, particularly in controlling blood glucose and fat storage."
+        },
+        "Glucagon": {
+            "definition": "A hormone that raises blood sugar levels and supports metabolic balance by promoting energy release.",
+            "explanation": "This indicator evaluates a hormone that aids in metabolism by regulating glucose availability for energy."
+        },
+        "Hepatic Function Test (LFT)": {
+            "definition": "A group of tests that assess liver function, including enzymes and proteins, which are involved in metabolic processes like detoxification and nutrient processing.",
+            "explanation": "This test evaluates the liver's role in metabolism, including how it processes fats, proteins, and toxins."
+        },
+        "Melatonin": {
+            "definition": "A hormone that regulates sleep-wake cycles and may influence metabolic rhythms, produced by the pineal gland.",
+            "explanation": "Melatonin helps with sleep patterns, which can indirectly affect metabolism and energy levels."
+        },
+        "Total Cholesterol": {
+            "definition": "A measure of the total amount of cholesterol in the blood, including various types like HDL and LDL, which is related to metabolic processes and heart health.",
+            "explanation": "Total cholesterol indicates the overall level of fats in the blood, which can influence metabolic functions and cardiovascular health. Maintaining balanced levels is important for general well-being."
+        },
+        "HDL Cholesterol": {
+            "definition": "High-density lipoprotein cholesterol, often called 'good' cholesterol, which helps remove other forms of cholesterol from the bloodstream and is linked to metabolic regulation.",
+            "explanation": "HDL cholesterol measures the level of a protective form of cholesterol that supports metabolic balance by aiding in the removal of excess cholesterol from the body."
+        },
+        "LDL Cholesterol": {
+            "definition": "Low-density lipoprotein cholesterol, often called 'bad' cholesterol, which can contribute to plaque buildup in arteries and is associated with metabolic and cardiovascular risks.",
+            "explanation": "LDL cholesterol reflects the level of a cholesterol type that can affect metabolic processes by potentially leading to artery narrowing if levels are not managed."
+        },
+        "Triglycerides": {
+            "definition": "A type of fat in the blood used for energy, which is part of metabolic functions and can indicate how the body processes dietary fats and sugars.",
+            "explanation": "Triglycerides measure the blood levels of a common fat form, playing a role in energy storage and metabolic health, with imbalances potentially affecting overall energy use."
+        }
+    },
+    "Reproductive Hormones": {
+        "Luteinizing Hormone": {
+            "definition": "A hormone produced by the pituitary gland that plays a key role in regulating the reproductive system, including the menstrual cycle and ovulation in females.",
+            "explanation": "Luteinizing hormone helps control the production of other reproductive hormones and is important for fertility and the menstrual cycle."
+        },
+        "Dihydrotestosterone": {
+            "definition": "A hormone derived from testosterone that contributes to the development and maintenance of male characteristics, but also plays a role in female reproductive health.",
+            "explanation": "Dihydrotestosterone is involved in hair growth, skin health, and reproductive functions, and it can influence conditions related to hormonal balance."
+        },
+        "Estradiol": {
+            "definition": "A form of estrogen that is a primary female sex hormone, involved in the regulation of the menstrual cycle, bone health, and other bodily functions.",
+            "explanation": "Estradiol helps maintain reproductive health, supports bone density, and influences mood and energy levels."
+        },
+        "Estrone": {
+            "definition": "A type of estrogen hormone that is produced in the body and becomes more prominent after menopause, contributing to reproductive and overall health.",
+            "explanation": "Estrone is important for maintaining hormonal balance, especially in relation to the menstrual cycle and bone health in females."
+        },
+        "Total Estrogens": {
+            "definition": "A measure of the combined levels of estrogen hormones in the body, which are key to female reproductive health and other bodily functions.",
+            "explanation": "Total estrogens help regulate the menstrual cycle, support bone strength, and play a role in mood and metabolism."
+        },
+        "FSH Serum": {
+            "definition": "Follicle-stimulating hormone (FSH) is a hormone released by the pituitary gland that stimulates the growth of ovarian follicles in females, aiding in reproductive processes.",
+            "explanation": "FSH is essential for fertility, the menstrual cycle, and the production of other hormones."
+        },
+        "Pregnenolone": {
+            "definition": "A precursor hormone that the body uses to produce other steroid hormones, including those involved in stress response and reproductive health.",
+            "explanation": "Pregnenolone serves as a building block for hormones that affect energy levels, mood, and reproductive functions."
+        },
+        "Progesterone": {
+            "definition": "A hormone that prepares the uterus for pregnancy and regulates the menstrual cycle in females.",
+            "explanation": "Progesterone is crucial for maintaining pregnancy, supporting mood, and balancing other hormones."
+        },
+        "Prolactin": {
+            "definition": "A hormone produced by the pituitary gland that stimulates breast milk production and influences reproductive health.",
+            "explanation": "Prolactin plays a role in fertility, breastfeeding, and overall hormonal regulation."
+        },
+        "Sex Hormone Binding": {
+            "definition": "Sex hormone binding globulin (SHBG) is a protein that binds to sex hormones in the blood, regulating their availability in the body.",
+            "explanation": "SHBG helps control the levels of active sex hormones, which are important for reproductive and metabolic health."
+        },
+        "Testosterone Serum": {
+            "definition": "Testosterone is a sex hormone that, in females, contributes to muscle mass, bone density, and reproductive health, though in smaller amounts than in males.",
+            "explanation": "Testosterone influences energy, mood, and physical functions, playing a supportive role in female hormonal balance."
+        }
+    },
+    "Miscellaneous Tests": {
+        "Melatonin": {
+            "definition": "Melatonin is a hormone produced by the pineal gland that helps regulate the body's sleep-wake cycle and is involved in maintaining circadian rhythms.",
+            "explanation": "Melatonin levels indicate how well the body might be managing sleep patterns and daily rhythms. Variations can be influenced by factors like light exposure and daily routines, and monitoring it may help in understanding sleep-related concerns."
+        },
+        "Hepatic Function Test (LFT)": {
+            "definition": "A Hepatic Function Test, also known as a Liver Function Test (LFT), is a group of blood tests that measure enzymes, proteins, and other substances to assess liver health and function.",
+            "explanation": "This test evaluates the liver's ability to process substances and maintain overall function, which is important for metabolism, detoxification, and nutrient storage."
+        }
+    }
+}
