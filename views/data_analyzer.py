@@ -33,9 +33,15 @@ async def recognize(user_data: UserRawData):
     }
 
 
-@router.get('/{sess_id}')
+@router.get('/diagnostic/{sess_id}')
 async def analyze(sess_id: str):
     result = await ANALYZER.analyze_data(sess_id)
+    return result
+
+
+@router.get('/questionnaire/{sess_id}')
+async def analyze(sess_id: str):
+    result = await ANALYZER.analyze_questionnaire(sess_id)
     return result
 
 

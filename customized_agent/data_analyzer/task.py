@@ -16,12 +16,14 @@ from base_agent.async_agent import AsyncAgent
 from customized_agent.data_analyzer.prompt_template import (
     BaseTemplate,
     Classification,
-    SubCategory
+    SubCategory,
+    FormAnalysis
 )
 from customized_agent.data_analyzer.config import (
     AnalyzerTaskConfig,
     SHELVE_CONFIG,
     ANALYZER_CONFIG,
+    FORM_ANALYZER_CONFIG,
     TASK_CONFIG,
     OCR_CONFIG
 )
@@ -38,6 +40,7 @@ class DataAnalyzer:
         self.create_bucket()
         # Initiate Router and Peter Chatbot agents
         self.analyzer = AsyncAgent(ANALYZER_CONFIG)
+        self.form_analyzer = AsyncAgent(FORM_ANALYZER_CONFIG)
         # Initiate diagnostics category database, which has schema like:
         '''
         {
@@ -56,21 +59,21 @@ class DataAnalyzer:
 
     
     def construct_history(
-        self, prompt: str, is_received: bool = True, history: list = None
+        self, prompt: str, sys_prompt: str, is_received: bool = True, history: list = None
     ):
         history = history or [{
             'role': 'system',
-            'content': self.analyzer.config.sys_prompt
+            'content': sys_prompt
         }]
         message = dict(role="user" if is_received else "assistant", content=prompt)
         history.append(message)
         return history
 
 
-    async def chat_once_pipe(self, template_cls: Type[BaseTemplate], template_kw: dict):
+    async def chat_once_pipe(self, sys_prompt: str, template_cls: Type[BaseTemplate], template_kw: dict):
         template = template_cls(**template_kw)
         prompt = template.format_template()
-        history = self.construct_history(prompt)
+        history = self.construct_history(prompt, sys_prompt)
         res = await self.analyzer.chat_once_pure(history, temperature=self.config.temperature)
         res = template.extract(res)
         return res
@@ -171,7 +174,11 @@ class DataAnalyzer:
         categories = self.cate_db.item_list_md()
         if not categories:
             categories = 'Not provided.'
-        res = await self.chat_once_pipe(Classification, dict(major_cate=categories, diagno_res=diagno_md))
+        res = await self.chat_once_pipe(
+            self.analyzer.config.sys_prompt, 
+            Classification, 
+            dict(major_cate=categories, diagno_res=diagno_md)
+        )
         # Update the diagnostics category database, 
         # create the new major diagnostics category.
         created = res.get('newly_created', None)
@@ -189,6 +196,7 @@ class DataAnalyzer:
         if not sub_items:
             sub_items = 'Not provided.'
         res = await self.chat_once_pipe(
+            self.analyzer.config.sys_prompt,
             SubCategory, 
             dict(major_cate=major_cate, sub_items=sub_items, diagno_res=cate_info)
         )
@@ -229,7 +237,7 @@ class DataAnalyzer:
         return analysis_res
 
 
-    async def analyze_data(self, data_path_hash):
+    async def analyze_data(self, data_path_hash: str):
         diagno_md = await asyncio.to_thread(
             MINIO_STORAGE.get_object, 
             f'{self.config.version}/{data_path_hash}.md', 
@@ -237,6 +245,21 @@ class DataAnalyzer:
         )
         diagno_md = diagno_md.decode()
         analysis_res = await self.analyze(diagno_md)
+        return analysis_res
+
+
+    async def analyze_questionnaire(self, data_path_hash: str):
+        questionnaire = await asyncio.to_thread(
+            MINIO_STORAGE.get_object, 
+            f'{self.config.version}/{data_path_hash}.md', 
+            self.config.parsed_bucket
+        )
+        questionnaire = questionnaire.decode()
+        analysis_res = await self.chat_once_pipe(
+            self.form_analyzer.config.sys_prompt, 
+            FormAnalysis, 
+            dict(questionnaire=questionnaire)
+        )
         return analysis_res
         
 
