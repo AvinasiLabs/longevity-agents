@@ -26,22 +26,23 @@ async def recognize(user_data: UserRawData):
     session_id = await ANALYZER.receive_data(
         user_data.storage_type,
         user_data.data_type,
-        user_data.data_path
+        user_data.data_path,
+        user_data.user_id
     )
     return {
         'result': session_id
     }
 
 
-@router.get('/diagnostic/{sess_id}')
-async def analyze(sess_id: str):
-    result = await ANALYZER.analyze_data(sess_id)
+@router.get('/diagnostic/{user_id}')
+async def analyze(user_id: str, sess_id: str = ''):
+    result = await ANALYZER.analyze_data(user_id, sess_id)
     return result
 
 
-@router.get('/questionnaire/{sess_id}')
-async def analyze(sess_id: str):
-    result = await ANALYZER.analyze_questionnaire(sess_id)
+@router.get('/questionnaire/{user_id}')
+async def analyze(user_id: str, sess_id: str = ''):
+    result = await ANALYZER.analyze_questionnaire(user_id, sess_id)
     return result
 
 

@@ -24,5 +24,6 @@ class UserRawData(BaseModel):
     model_config: ConfigDict = ConfigDict(extra="forbid")
 
     storage_type: Literal['minio', 'ipfs']
-    data_type: Literal['text', 'pdf', 'img']
+    data_type: str
     data_path: str
+    user_id: str

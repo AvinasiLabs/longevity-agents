@@ -21,8 +21,7 @@ class AnalyzerTaskConfig(TaskConfig):
     use_ipfs: bool = False
     ocr_api: str
     ocr_cache: Path = CACHE_DIR
-    diag_bucket: str = None
-    parsed_bucket: str = 'diagno-parsed'
+    bucket: str = 'diagnostic'
     version: str = 'v1'
     temperature: float = Field(0.2, gt=0)
 
@@ -30,8 +29,7 @@ class AnalyzerTaskConfig(TaskConfig):
 TASK_CONFIG = AnalyzerTaskConfig(
     use_ipfs=False,
     ocr_api=OCR_API,
-    diag_bucket='diagno-raw',
-    parsed_bucket='diagno-parsed',
+    bucket='diagnostic',
     version='v1',
     temperature=0.2
 )
@@ -73,3 +71,11 @@ SHELVE_CONFIG = ShelveConfig(
     db_path=RELATIVE_PATH.joinpath('assets/diagno_category.json')
 )
 
+
+DATATYPE_MAP = {
+    "image/jpeg": "img",
+    "image/png": "img",
+    "application/pdf": "pdf",
+    "text/markdown": "text",
+    "text/plain": "text",
+}

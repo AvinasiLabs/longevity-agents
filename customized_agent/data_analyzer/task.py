@@ -25,7 +25,8 @@ from customized_agent.data_analyzer.config import (
     ANALYZER_CONFIG,
     FORM_ANALYZER_CONFIG,
     TASK_CONFIG,
-    OCR_CONFIG
+    OCR_CONFIG,
+    DATATYPE_MAP
 )
 from module.toolkit.ai_tools import OcrApi
 
@@ -80,12 +81,11 @@ class DataAnalyzer:
 
 
     def create_bucket(self):
-        MINIO_STORAGE.create_bucket(self.config.diag_bucket)
-        MINIO_STORAGE.create_bucket(self.config.parsed_bucket)
+        MINIO_STORAGE.create_bucket(self.config.bucket)
 
 
     async def get_minio_data(self, obj_name: str):
-        bucket = self.config.diag_bucket
+        bucket = self.config.bucket
         data_bytes = await asyncio.to_thread(MINIO_STORAGE.get_object, obj_name, bucket)
         return data_bytes
     
@@ -130,6 +130,8 @@ class DataAnalyzer:
         data_path_hash: str, 
         data_type: Literal['text', 'pdf', 'img']
     ) -> str:
+        # Get standard data_type
+        data_type = DATATYPE_MAP[data_type]
         if data_type == 'text':
             content = data.decode()
         elif data_type == 'img':
@@ -144,15 +146,16 @@ class DataAnalyzer:
         return content
 
 
-    async def move_parsed_data(self, data: str, data_path_hash:str):
+    async def move_parsed_data(self, data: str, user_id: str, data_path_hash:str):
         if self.config.use_ipfs:
             raise NotImplementedError('IPFS storage is unsupported now.')
         else:
             await asyncio.to_thread(
                 MINIO_STORAGE.put_object,
-                f'{self.config.version}/{data_path_hash}.md',
+                # Construct the parsed file's oject_name
+                f'{self.config.version}/{user_id}/parsed/{data_path_hash}.md',
                 io.BytesIO(data.encode()),
-                self.config.parsed_bucket
+                self.config.bucket
             )
         # Free cache
         cache = self.config.ocr_cache
@@ -162,11 +165,11 @@ class DataAnalyzer:
         logger.info(f'Cache free: {data_path_hash}')
 
 
-    async def receive_data(self, storage_type: str, data_type: str, data_path: str) -> str:
+    async def receive_data(self, storage_type: str, data_type: str, data_path: str, user_id: str) -> str:
         data = await self.get_data(storage_type, data_path)
         data_path_hash = generate_sha256(data_path)
         data = await self.parse_data(data, data_path_hash, data_type)
-        await self.move_parsed_data(data, data_path_hash)
+        await self.move_parsed_data(data, user_id, data_path_hash)
         return data_path_hash
 
 
@@ -237,28 +240,42 @@ class DataAnalyzer:
         return analysis_res
 
 
-    async def analyze_data(self, data_path_hash: str):
+    async def analyze_data(self, user_id: str, data_path_hash: str):
         diagno_md = await asyncio.to_thread(
             MINIO_STORAGE.get_object, 
-            f'{self.config.version}/{data_path_hash}.md', 
-            self.config.parsed_bucket
+            f'{self.config.version}/{user_id}/parsed/{data_path_hash}.md', 
+            self.config.bucket
         )
         diagno_md = diagno_md.decode()
         analysis_res = await self.analyze(diagno_md)
+        await asyncio.to_thread(
+            MINIO_STORAGE.put_object,
+            # Construct the parsed file's oject_name
+            f'{self.config.version}/{user_id}/final/{data_path_hash}.json',
+            analysis_res,
+            self.config.bucket
+        )
         return analysis_res
 
 
-    async def analyze_questionnaire(self, data_path_hash: str):
+    async def analyze_questionnaire(self, user_id:str, data_path_hash: str):
         questionnaire = await asyncio.to_thread(
             MINIO_STORAGE.get_object, 
-            f'{self.config.version}/{data_path_hash}.md', 
-            self.config.parsed_bucket
+            f'{self.config.version}/{user_id}/parsed/{data_path_hash}.md', 
+            self.config.bucket
         )
         questionnaire = questionnaire.decode()
         analysis_res = await self.chat_once_pipe(
             self.form_analyzer.config.sys_prompt, 
             FormAnalysis, 
             dict(questionnaire=questionnaire)
+        )
+        await asyncio.to_thread(
+            MINIO_STORAGE.put_object,
+            # Construct the parsed file's oject_name
+            f'{self.config.version}/{user_id}/final/{data_path_hash}.json',
+            analysis_res,
+            self.config.bucket
         )
         return analysis_res
         

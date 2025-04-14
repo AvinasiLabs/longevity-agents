@@ -244,24 +244,24 @@ Important Note: Do not provide any medical or medication advice. Your suggestion
 
 Output Format: Structure your response in the following JSON format:
 ```JSON
-{
+{{
   "provided": [
-    {
+    {{
       "name": "<health_risk_name>",
       "explanation": "<significance_explanation>",
       "suggestions": "<lifestyle_diet_exercise_suggestions>"
-    },
+    }},
     ...
   ],
   "additional": [
-    {
+    {{
       "name": "<health_risk_name>",
       "explanation": "<significance_explanation>",
       "suggestions": "<lifestyle_diet_exercise_suggestions>"
-    },
+    }},
     ...
   ]
-}
+}}
 ```
 
 "provided": Contains health risks explicitly mentioned by the user in the questionnaire. If no such risks are mentioned, this list can be empty.
