@@ -1,53 +1,42 @@
 #! python3
 # -*- encoding: utf-8 -*-
 """
-@Time: 2025/02/15 11:06:30
+@Time: 2025/04/14 09:38:32
 @Author: Louis Jin
 @Version: 1.0
 @Contact: lululouisjin@gmail.com
-@Description: A combination module to integrate different components for api calling
+@Description: Data analyzer router.
 """
 
 
-import os
-from fastapi import APIRouter, HTTPException
-from fastapi.responses import StreamingResponse
-
-
-router = APIRouter()
+from fastapi import APIRouter
 
 
 # local module
 from customized_agent.data_analyzer.task import DataAnalyzer
-from views.schema import ResetSession, UserRawData
-from utils.logger import logger
-from utils.helpers import SnowflakeIDGenerator
-from utils.storage.minio_storage import MINIO_STORAGE
+from views.schema import UserRawData
 
 
-ID_GEN = SnowflakeIDGenerator(machine_id=os.getenv('HOST_ID', 1))
+router = APIRouter()
+ANALYZER = DataAnalyzer()
 
 
-# Temporary session storage
-STORAGE = dict()
-
-
-@router.post('/reset')
-async def reset_session(reset_sess: ResetSession):
-    sess_id = reset_sess.session_id
-    if not sess_id:
-        sess_id = str(ID_GEN.generate_id())
-    STORAGE[sess_id] = DataAnalyzer()
+@router.post('/recognize')
+async def recognize(user_data: UserRawData):
+    session_id = await ANALYZER.receive_data(
+        user_data.storage_type,
+        user_data.data_type,
+        user_data.data_path
+    )
     return {
-        'status_code': 200,
-        'result': sess_id,
-        'message': "This agent is developed using Peter Attia's publicly available contents and is not affiliated with or endorsed by Peter Attia."
+        'result': session_id
     }
 
 
-@router.post('/analyze')
-async def analyze(user_data: UserRawData):
-    ...
+@router.get('/{sess_id}')
+async def analyze(sess_id: str):
+    result = await ANALYZER.analyze_data(sess_id)
+    return result
 
 
 if __name__ == "__main__":

@@ -1,16 +1,14 @@
+import io
 import json
-import re
-import copy
 import asyncio
 import shutil
-import img2pdf
 from typing import Type, List, Literal
 from pathlib import Path
 
 
 # local module
 from utils.logger import logger
-from utils.helpers import generate_sha256, bytes_to_b64, b64_to_bytes
+from utils.helpers import generate_sha256, bytes_to_b64
 from utils.file_convert import to_pdf
 from utils.storage.minio_storage import MINIO_STORAGE
 from utils.storage.shelve_storage import JsonStorage
@@ -31,6 +29,9 @@ from module.toolkit.ai_tools import OcrApi
 
 
 class DataAnalyzer:
+    """
+    A state free agent used to parse and analyze in-vitro/in-vivo diagnostics result.
+    """
     def __init__(self, config: AnalyzerTaskConfig = None) -> None:
         self.config = config or TASK_CONFIG
         # Create minio storage. TODO: Use IPFS storage
@@ -70,7 +71,7 @@ class DataAnalyzer:
         template = template_cls(**template_kw)
         prompt = template.format_template()
         history = self.construct_history(prompt)
-        res = await self.analyzer.chat_once_pure(history, temperature=0.2)
+        res = await self.analyzer.chat_once_pure(history, temperature=self.config.temperature)
         res = template.extract(res)
         return res
 
@@ -147,13 +148,14 @@ class DataAnalyzer:
             await asyncio.to_thread(
                 MINIO_STORAGE.put_object,
                 f'{self.config.version}/{data_path_hash}.md',
-                data.encode(),
+                io.BytesIO(data.encode()),
                 self.config.parsed_bucket
             )
         # Free cache
         cache = self.config.ocr_cache
         output_dir = cache.joinpath(data_path_hash)
-        shutil.rmtree(str(output_dir))
+        if output_dir.exists():
+            shutil.rmtree(str(output_dir))
         logger.info(f'Cache free: {data_path_hash}')
 
 
@@ -161,6 +163,7 @@ class DataAnalyzer:
         data = await self.get_data(storage_type, data_path)
         data_path_hash = generate_sha256(data_path)
         data = await self.parse_data(data, data_path_hash, data_type)
+        await self.move_parsed_data(data, data_path_hash)
         return data_path_hash
 
 
@@ -238,17 +241,4 @@ class DataAnalyzer:
         
 
 if __name__ == '__main__':
-    analyzer = DataAnalyzer()
-    
-    md_path = '/root/rag/longevity-agents/.cache/ocrs/Hormones/732c08928ac5f308297146dc30bb1602.md'
-    with open(md_path, 'r') as f:
-        md = f.read()
-    
-    async def main():
-        res = await analyzer.analyze(md)
-        return res
-
-    res = asyncio.run(main())
-    with open('/root/rag/longevity-agents/customized_agent/data_analyzer/dev/results_hormones.json', 'w') as f:
-        json.dump(res, f, indent=4)
     ...

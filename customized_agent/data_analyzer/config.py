@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from pydantic import Field
 
 # local module
 from configs.config_cls import AgentConfig, TaskConfig, OcrConfig, ShelveConfig
@@ -13,6 +14,9 @@ CACHE_DIR = RELATIVE_PATH.joinpath('.cache')
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 
+OCR_API = 'http://173.185.79.174:44568/v1/ocr'
+
+
 class AnalyzerTaskConfig(TaskConfig):
     use_ipfs: bool = False
     ocr_api: str
@@ -20,14 +24,16 @@ class AnalyzerTaskConfig(TaskConfig):
     diag_bucket: str = None
     parsed_bucket: str = 'diagno-parsed'
     version: str = 'v1'
+    temperature: float = Field(0.2, gt=0)
 
 
 TASK_CONFIG = AnalyzerTaskConfig(
     use_ipfs=False,
-    ocr_api='http://113.150.232.222:41041/v1/ocr',
+    ocr_api=OCR_API,
     diag_bucket='diagno-raw',
     parsed_bucket='diagno-parsed',
-    version='v1'
+    version='v1',
+    temperature=0.2
 )
 
 
@@ -41,7 +47,7 @@ ROUTER_CONFIG = AgentConfig(
 
 
 OCR_CONFIG = OcrConfig(
-    base_url='http://127.0.0.1:48308/v1/ocr',
+    base_url=OCR_API,
     timeout=3600,
     sema_process=4,
     ocr_cache=CACHE_DIR
