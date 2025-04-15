@@ -27,3 +27,10 @@ class UserRawData(BaseModel):
     data_type: str
     data_path: str
     user_id: str
+
+
+class AnanlysisRequest(BaseModel):
+    model_config: ConfigDict = ConfigDict(extra="forbid")
+
+    user_id: str
+    sess_id: str

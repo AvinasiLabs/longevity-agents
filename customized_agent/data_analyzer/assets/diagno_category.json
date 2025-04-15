@@ -355,6 +355,10 @@
         "VAT Volume": {
             "definition": "Visceral Adipose Tissue Volume, indicating the total space occupied by fat around internal organs.",
             "explanation": "VAT Volume assesses the amount of visceral fat, which can affect metabolic functions and potentially impact bone health by influencing body weight and hormone levels."
+        },
+        "BMD Total": {
+            "definition": "Total Bone Mineral Density, representing the overall mineral content in bone tissue across the body.",
+            "explanation": "This provides an overall assessment of bone mineral density, which can reflect general bone strength and health."
         }
     },
     "Metabolic Indicators": {
@@ -553,6 +557,50 @@
         "Hepatic Function Test (LFT)": {
             "definition": "A Hepatic Function Test, also known as a Liver Function Test (LFT), is a group of blood tests that measure enzymes, proteins, and other substances to assess liver health and function.",
             "explanation": "This test evaluates the liver's ability to process substances and maintain overall function, which is important for metabolism, detoxification, and nutrient storage."
+        },
+        "Legs Fat Mass": {
+            "definition": "The amount of fat tissue in the legs, as measured by body composition scans",
+            "explanation": "This measures the fat mass in the legs, which can reflect overall body composition and how fat is distributed, potentially relating to mobility and metabolic health. Without a reference range, it's not possible to determine if this is typical."
+        },
+        "Trunk Fat Mass": {
+            "definition": "The amount of fat tissue in the trunk area, as measured by body composition scans",
+            "explanation": "This assesses fat mass in the central body region, which may be linked to factors like core strength and metabolic function. As no reference range is available, status cannot be evaluated."
+        },
+        "Android Fat Mass": {
+            "definition": "The amount of fat tissue in the android region (upper body, around the abdomen), as measured by body composition scans",
+            "explanation": "This indicates fat distribution in the upper body, which can be associated with energy storage and potential health considerations. Without reference data, it's unclear if this falls within expected levels."
+        },
+        "Gynoid Fat Mass": {
+            "definition": "The amount of fat tissue in the gynoid region (lower body, around hips and thighs), as measured by body composition scans",
+            "explanation": "This measures fat in the lower body, which might relate to aspects like hormone balance or physical activity. Since no reference range is given, no assessment of normality can be made."
+        },
+        "Total Fat Mass": {
+            "definition": "The overall amount of fat tissue in the body, as measured by body composition scans",
+            "explanation": "This represents the total fat in the body, which can provide insight into overall composition and wellness. Without a reference range, it's not possible to comment on whether this is within typical values."
+        },
+        "Arms Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the arms, as measured by body composition scans",
+            "explanation": "This evaluates lean mass in the arms, which may indicate strength and physical function. As reference ranges are missing, no determination of typicality can be provided."
+        },
+        "Legs Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the legs, as measured by body composition scans",
+            "explanation": "This measures lean mass in the legs, potentially relating to mobility and endurance. Without reference data, status remains undetermined."
+        },
+        "Trunk Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the trunk area, as measured by body composition scans",
+            "explanation": "This assesses lean mass in the central body, which could be important for posture and core stability. Since no reference range is available, no further evaluation is possible."
+        },
+        "Android Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the android region (upper body), as measured by body composition scans",
+            "explanation": "This indicates lean mass in the upper body, which may support daily activities and metabolism. Lacking reference values, status cannot be assessed."
+        },
+        "Gynoid Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the gynoid region (lower body), as measured by body composition scans",
+            "explanation": "This measures lean mass in the lower body, possibly linked to lower body strength. Without a reference range, it's not possible to determine if this is expected."
+        },
+        "Total Lean Mass": {
+            "definition": "The overall amount of muscle and non-fat tissue in the body, as measured by body composition scans",
+            "explanation": "This represents the total lean body mass, which can reflect muscle health and physical resilience. As no reference range is provided, no status can be assigned."
         }
     },
     "DNA Methylation Tests": {},
@@ -626,5 +674,22 @@
             "explanation": "This assesses the perceived quality of sleep, which can influence daily energy levels, mood, and ability to function effectively."
         }
     },
-    "Lipid Panel": {}
+    "Lipid Panel": {
+        "Total Cholesterol": {
+            "definition": "Total cholesterol measures the overall amount of cholesterol in the blood, including LDL, HDL, and other types, which comes from diet and the liver.",
+            "explanation": "Total cholesterol indicates the combined levels of different cholesterol types in the blood, which is significant for assessing heart health and the risk of cardiovascular issues."
+        },
+        "HDL Cholesterol": {
+            "definition": "HDL cholesterol, often called 'good' cholesterol, is a type of lipoprotein that helps remove other forms of cholesterol from the bloodstream.",
+            "explanation": "HDL cholesterol helps transport cholesterol away from arteries and back to the liver, playing a key role in reducing the risk of heart-related concerns."
+        },
+        "LDL Cholesterol": {
+            "definition": "LDL cholesterol, often referred to as 'bad' cholesterol, is a lipoprotein that can build up in the walls of blood vessels, potentially affecting heart health.",
+            "explanation": "LDL cholesterol is significant because high levels may contribute to plaque buildup in arteries, which is linked to cardiovascular health."
+        },
+        "Triglycerides": {
+            "definition": "Triglycerides are a type of fat in the blood that the body uses for energy, derived from food and stored for later use.",
+            "explanation": "Triglycerides provide energy to the body but high levels can be associated with factors like diet and can impact heart health when elevated."
+        }
+    }
 }
