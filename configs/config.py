@@ -42,10 +42,6 @@ IPFS_CONFIG = IPFSConfig(
 
 
 MYSQL_CONFIG = MySQLConfig(
-    host='10.11.169.223',
-    port=3313,
-    user='avinasi',
-    database='avinasi',
     charset='utf8mb4'
 )
 

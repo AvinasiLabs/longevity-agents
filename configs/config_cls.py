@@ -128,13 +128,12 @@ class MySQLConfig(BaseSettings):
         extra="ignore", env_file=".env", env_prefix="mysql_"
     )
 
-    host: str = "127.0.0.1"
-    port: int = 3306
-    user: str = "root"
+    host: str
+    port: int
+    user: str
     pwd: SecretStr
     database: str
     charset: str = "utf8mb4"
-    max_workers: int = 16
 
 
 class ShelveConfig(BaseSettings):

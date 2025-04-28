@@ -261,6 +261,4 @@ MYSQL_STORAGE = MySQLStorage()
 
 
 if __name__ == '__main__':
-    res = MYSQL_STORAGE.query_all("select * from tb_user_agent_info_1 where session_id  = '7307520186490294272' order by insert_time asc limit 10")
-    for record in res:
-        print(record)
+    ...

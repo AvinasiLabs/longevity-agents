@@ -201,15 +201,4 @@ class PaperChatbot:
 
 
 if __name__ == '__main__':
-    import asyncio
-
-
-    async def main():
-        chatbot = PaperChatbot()
-        question = 'I want to control my Uric acid.'
-        res = chatbot.pipe(question, '123')
-        async for chunk in res:
-            if chunk:
-                print(chunk, end='')
-
-    asyncio.run(main())
+    ...

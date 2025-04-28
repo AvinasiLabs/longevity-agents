@@ -149,18 +149,4 @@ class BryanChatbot:
 
 
 if __name__ == '__main__':
-    import asyncio
-
-
-    async def main():
-        chatbot = BryanChatbot()
-        question = 'I want to control my Uric acid.'
-        # question = 'Improve the sleep quality'
-        # question = 'How is the weather in London now?'
-        print(question)
-        res = chatbot.pipe(question)
-        async for chunk in res:
-            if chunk:
-                print(chunk, end='')
-
-    asyncio.run(main())
+    ...
