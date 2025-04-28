@@ -58,7 +58,7 @@ async def paper_chat(sess_chat: SessionChat):
         raise HTTPException(status_code=404, detail='Error: session_id invalid, please reset session first.')
     session: PaperChatbot = STORAGE[sess_id]
     try:
-        generator = session.pipe(sess_chat.question)
+        generator = session.pipe(sess_chat.question, sess_id)
         return StreamingResponse(generator, media_type='text/plain')
     except Exception as err:
         raise HTTPException(status_code=404, detail='Error: generate answer failed.')

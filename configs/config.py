@@ -4,7 +4,7 @@ from pathlib import Path
 
 # local module
 from configs.config_cls import (
-    SerpapiConfig, MinioConfig, IPFSConfig, EmbeddingConfig, OcrConfig
+    SerpapiConfig, MinioConfig, IPFSConfig, MySQLConfig, EmbeddingConfig, OcrConfig
 )
 
 
@@ -38,6 +38,15 @@ IPFS_CONFIG = IPFSConfig(
     endpoint='http://127.0.0.1:8000',
     semaphore=32,
     timeout=300
+)
+
+
+MYSQL_CONFIG = MySQLConfig(
+    host='10.11.169.223',
+    port=3313,
+    user='avinasi',
+    database='avinasi',
+    charset='utf8mb4'
 )
 
 

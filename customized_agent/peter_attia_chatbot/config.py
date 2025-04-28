@@ -37,3 +37,6 @@ TOPICS_PATH = {
     'Risks': 'customized_agent/peter_attia_chatbot/assets/risks.txt',
     'Longevity': 'customized_agent/peter_attia_chatbot/assets/longevity.txt'
 }
+
+
+MYSQL_TABLE = 'tb_user_agent_info_1'
