@@ -20,11 +20,12 @@ from customized_agent.longevity_paper.config import (
     PaperTaskConfig,
     ROUTER_CONFIG,
     PAPER_CONFIG,
-    TASK_CONFIG
+    TASK_CONFIG,
+    MYSQL_TABLE
 )
 from module.toolkit.search_tools.serp_api import SerpApi
 from module.toolkit.retrieval.paper.retrieve import PaperRetrieve
-
+from utils.storage.mysql import MYSQL_STORAGE
 
 class PaperChatbot:
     def __init__(self, config: PaperTaskConfig = None) -> None:
@@ -131,6 +132,7 @@ class PaperChatbot:
         
 
     async def tool_answer(self, question:str, history:list):
+        self.full_history.append({'role': 'user', 'content': question})
         tool_names = list(self.tool_caller.toolkit.keys())
         result = self.tool_caller.tool_call_chat(
             question=question,
@@ -145,7 +147,11 @@ class PaperChatbot:
         self.full_history.append({'role': 'assistant', 'content': content})
     
 
-    async def pipe(self, question):
+    async def pipe(self, question: str, session_id: str = ''):
+        history = MYSQL_STORAGE.query_all(f"select * from {MYSQL_TABLE} where session_id = '{session_id}' order by insert_time asc limit 10")
+        history = [{'role': 'user' if item['sender'] == 0 else 'assistant', 'content': item['content']} for item in history]
+        self.lite_history = [{'role': 'system', 'content': self.paper.config.sys_prompt}] + history
+        self.full_history = copy.deepcopy(self.lite_history)
         self.lite_history.append({'role': 'user', 'content': question})
         # Decide to use retrieval tool or not
         label = await self.retrieve_or_not(question)
@@ -191,6 +197,7 @@ class PaperChatbot:
                         else:
                             continue
         self.lite_history.append(copy.deepcopy(self.full_history[-1]))
+        ...
 
 
 if __name__ == '__main__':

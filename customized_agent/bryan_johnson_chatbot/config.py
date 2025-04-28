@@ -38,3 +38,6 @@ TOPICS_PATH = {
     'Pregnancy': 'customized_agent/bryan_johnson_chatbot/assets/pregnancy.txt',
     'General': 'customized_agent/bryan_johnson_chatbot/assets/general.txt'
 }
+
+
+MYSQL_TABLE = 'tb_user_agent_info_1'

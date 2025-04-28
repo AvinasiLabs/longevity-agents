@@ -123,6 +123,19 @@ class IPFSConfig(BaseSettings):
     session_kw: dict = dict()
 
 
+class MySQLConfig(BaseSettings):
+    model_config = SettingsConfigDict(
+        extra="ignore", env_file=".env", env_prefix="mysql_"
+    )
+
+    host: str
+    port: int
+    user: str
+    pwd: SecretStr
+    database: str
+    charset: str = "utf8mb4"
+
+
 class ShelveConfig(BaseSettings):
     db_path: Path
 

@@ -43,3 +43,5 @@ PAPER_CONFIG = AgentConfig(
     temperature=0.01
 )
 
+
+MYSQL_TABLE = 'tb_user_agent_info_1'

@@ -13,9 +13,11 @@ from customized_agent.bryan_johnson_chatbot.prompt_template import (
 from customized_agent.bryan_johnson_chatbot.config import (
     ROUTER_CONFIG,
     BRYAN_CONFIG,
-    TOPICS_PATH
+    TOPICS_PATH,
+    MYSQL_TABLE
 )
 from module.toolkit.search_tools.serp_api import SerpApi
+from utils.storage.mysql import MYSQL_STORAGE
 
 
 class BryanChatbot:
@@ -108,7 +110,11 @@ class BryanChatbot:
         self.full_history.append({'role': 'assistant', 'content': result})
     
 
-    async def pipe(self, question):
+    async def pipe(self, question: str, session_id: str = ''):
+        history = MYSQL_STORAGE.query_all(f"select * from {MYSQL_TABLE} where session_id = '{session_id}' order by insert_time asc limit 10")
+        history = [{'role': 'user' if item['sender'] == 0 else 'assistant', 'content': item['content']} for item in history]
+        self.lite_history = [{'role': 'system', 'content': self.bryan.config.sys_prompt}] + history
+        self.full_history = copy.deepcopy(self.lite_history)
         self.lite_history.append({'role': 'user', 'content': question})
         topic_ref = None
         for _ in range(5):
@@ -143,18 +149,4 @@ class BryanChatbot:
 
 
 if __name__ == '__main__':
-    import asyncio
-
-
-    async def main():
-        chatbot = BryanChatbot()
-        # question = 'I want to control my Uric acid.'
-        # question = 'Improve the sleep quality'
-        question = 'How is the weather in London now?'
-        print(question)
-        res = chatbot.pipe(question)
-        async for chunk in res:
-            if chunk:
-                print(chunk, end='')
-
-    asyncio.run(main())
+    ...
