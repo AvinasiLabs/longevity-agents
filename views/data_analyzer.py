@@ -14,7 +14,7 @@ from fastapi import APIRouter
 
 # local module
 from customized_agent.data_analyzer.task import DataAnalyzer
-from views.schema import UserRawData
+from views.schema import UserRawData, AnanlysisRequest
 
 
 router = APIRouter()
@@ -26,16 +26,23 @@ async def recognize(user_data: UserRawData):
     session_id = await ANALYZER.receive_data(
         user_data.storage_type,
         user_data.data_type,
-        user_data.data_path
+        user_data.data_path,
+        user_data.user_id
     )
     return {
         'result': session_id
     }
 
 
-@router.get('/{sess_id}')
-async def analyze(sess_id: str):
-    result = await ANALYZER.analyze_data(sess_id)
+@router.post('/diagnostic')
+async def analyze(request: AnanlysisRequest):
+    result = await ANALYZER.analyze_data(request.user_id, request.sess_id)
+    return result
+
+
+@router.post('/questionnaire')
+async def analyze(request: AnanlysisRequest):
+    result = await ANALYZER.analyze_questionnaire(request.user_id, request.sess_id)
     return result
 
 

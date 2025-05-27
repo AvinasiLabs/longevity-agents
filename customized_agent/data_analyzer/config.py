@@ -5,7 +5,7 @@ from pydantic import Field
 # local module
 from configs.config_cls import AgentConfig, TaskConfig, OcrConfig, ShelveConfig
 from customized_agent.data_analyzer.prompt_template import (
-    SYS_ROUTER, SYS_ANALYZER
+    SYS_ANALYZER, SYS_FORM_ANALYZER
 )
 
 
@@ -21,8 +21,7 @@ class AnalyzerTaskConfig(TaskConfig):
     use_ipfs: bool = False
     ocr_api: str
     ocr_cache: Path = CACHE_DIR
-    diag_bucket: str = None
-    parsed_bucket: str = 'diagno-parsed'
+    bucket: str = 'diagnostic'
     version: str = 'v1'
     temperature: float = Field(0.2, gt=0)
 
@@ -30,19 +29,9 @@ class AnalyzerTaskConfig(TaskConfig):
 TASK_CONFIG = AnalyzerTaskConfig(
     use_ipfs=False,
     ocr_api=OCR_API,
-    diag_bucket='diagno-raw',
-    parsed_bucket='diagno-parsed',
+    bucket='diagnostic',
     version='v1',
     temperature=0.2
-)
-
-
-ROUTER_CONFIG = AgentConfig(
-    llm_token=os.getenv('AIMLAPI_KEY'),
-    llm_uri='https://api.aimlapi.com/v1',
-    llm_model='gpt-4o',
-    sys_prompt=SYS_ROUTER, 
-    max_token=512
 )
 
 
@@ -66,7 +55,27 @@ ANALYZER_CONFIG = AgentConfig(
 )
 
 
+FORM_ANALYZER_CONFIG = AgentConfig(
+    llm_token=os.getenv('AIMLAPI_KEY'),
+    llm_uri='https://api.aimlapi.com/v1',
+    # llm_model='gpt-4o-mini',
+    llm_model='x-ai/grok-3-mini-beta',
+    # llm_model='nvidia/llama-3.1-nemotron-70b-instruct',
+    sys_prompt=SYS_FORM_ANALYZER,
+    max_token=8192,
+    temperature=0.01
+)
+
+
 SHELVE_CONFIG = ShelveConfig(
     db_path=RELATIVE_PATH.joinpath('assets/diagno_category.json')
 )
 
+
+DATATYPE_MAP = {
+    "image/jpeg": "img",
+    "image/png": "img",
+    "application/pdf": "pdf",
+    "text/markdown": "text",
+    "text/plain": "text",
+}

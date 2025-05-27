@@ -265,6 +265,22 @@
         "Leptin": {
             "definition": "Leptin is a hormone produced by fat cells that plays a role in regulating energy balance, appetite, and metabolism, often linked to body fat levels in the context of body composition.",
             "explanation": "Leptin helps signal to the body about energy stores and can influence hunger and weight management. In body composition analysis, it may relate to how fat mass affects overall metabolic health."
+        },
+        "Total BMC": {
+            "definition": "The total bone mineral content in the entire body, indicating overall bone density.",
+            "explanation": "This measures the overall mineral in bones, which is important for structural health."
+        },
+        "Resting Metabolic Rate": {
+            "definition": "The number of calories burned at rest, reflecting basic energy expenditure.",
+            "explanation": "This indicates the energy your body uses for essential functions, which can influence weight management."
+        },
+        "Visceral Adipose Tissue Mass": {
+            "definition": "The mass of fat stored around internal organs in the abdominal area.",
+            "explanation": "This type of fat can be linked to metabolic health and is different from subcutaneous fat."
+        },
+        "Visceral Adipose Tissue Volume": {
+            "definition": "The volume of fat tissue around internal organs.",
+            "explanation": "This measures the space occupied by visceral fat, which may relate to body composition and health."
         }
     },
     "Bone Health": {
@@ -319,6 +335,30 @@
         "Calcitonin": {
             "definition": "A hormone produced by the thyroid gland that helps regulate calcium levels and may inhibit bone breakdown, contributing to bone health.",
             "explanation": "Calcitonin assists in controlling calcium in the blood and protecting bone density by reducing bone resorption. A decrease, as shown in the result, might indicate it's lower than expected, which could have implications for bone maintenance."
+        },
+        "BMD Head Arms Legs": {
+            "definition": "Bone Mineral Density of the head, arms, and legs combined, measuring the mineral content in these areas to evaluate overall bone strength in the extremities and head.",
+            "explanation": "BMD Head Arms Legs provides a combined measure of bone density in the head, arms, and legs, which is significant for assessing bone health in these regions that support daily movements."
+        },
+        "Young Adult T-Score Pelvis": {
+            "definition": "A score that compares the bone density of the pelvis to that of a healthy young adult, used to assess bone health relative to peak bone mass.",
+            "explanation": "Young Adult T-Score Pelvis measures how your pelvic bone density compares to a young adult reference, helping to indicate potential bone health status."
+        },
+        "Age-Matched Z-Score Pelvis": {
+            "definition": "A score that compares the bone density of the pelvis to that of individuals of the same age and sex, accounting for age-related changes.",
+            "explanation": "Age-Matched Z-Score Pelvis assesses how your pelvic bone density compares to others of your age, providing insight into age-adjusted bone health."
+        },
+        "VAT Mass": {
+            "definition": "Visceral Adipose Tissue Mass, referring to the amount of fat stored around internal organs in the abdominal area.",
+            "explanation": "VAT Mass measures the fat in the visceral area, which can influence overall metabolic health and may indirectly relate to bone health through factors like inflammation or weight distribution."
+        },
+        "VAT Volume": {
+            "definition": "Visceral Adipose Tissue Volume, indicating the total space occupied by fat around internal organs.",
+            "explanation": "VAT Volume assesses the amount of visceral fat, which can affect metabolic functions and potentially impact bone health by influencing body weight and hormone levels."
+        },
+        "BMD Total": {
+            "definition": "Total Bone Mineral Density, representing the overall mineral content in bone tissue across the body.",
+            "explanation": "This provides an overall assessment of bone mineral density, which can reflect general bone strength and health."
         }
     },
     "Metabolic Indicators": {
@@ -421,6 +461,46 @@
         "Triglycerides": {
             "definition": "A type of fat in the blood used for energy, which is part of metabolic functions and can indicate how the body processes dietary fats and sugars.",
             "explanation": "Triglycerides measure the blood levels of a common fat form, playing a role in energy storage and metabolic health, with imbalances potentially affecting overall energy use."
+        },
+        "A/G Ratio": {
+            "definition": "The ratio of android fat percentage (fat in the upper body) to gynoid fat percentage (fat in the lower body), indicating body fat distribution patterns.",
+            "explanation": "This ratio helps assess how fat is distributed in the body, with a lower value potentially linked to better metabolic health and reduced risks associated with fat accumulation."
+        },
+        "Self-Reported Diabetes Diagnosis": {
+            "definition": "User-reported history of being diagnosed with diabetes by a doctor.",
+            "explanation": "This indicates whether a diabetes diagnosis has been reported, which could relate to metabolic health and blood sugar regulation."
+        },
+        "Days of Moderate/Vigorous Physical Activity": {
+            "definition": "Number of days in the last 30 with moderate or vigorous exercise for more than 10 minutes.",
+            "explanation": "This reflects physical activity levels, which can influence metabolism, energy expenditure, and overall health."
+        },
+        "Days of Walking": {
+            "definition": "Number of days in the last 30 with walking for at least 10 minutes.",
+            "explanation": "This measures daily walking habits, which can contribute to cardiovascular health and metabolic activity."
+        },
+        "Daily Walking Time": {
+            "definition": "Average time spent walking each day.",
+            "explanation": "This indicates the duration of walking, which can affect energy use and metabolic rate."
+        },
+        "Average Sleep Hours": {
+            "definition": "Average number of hours slept per 24-hour period.",
+            "explanation": "Sleep duration can impact energy levels, metabolism, and recovery."
+        },
+        "Sleep Quality": {
+            "definition": "Self-reported quality of typical night's sleep over the past 4 weeks.",
+            "explanation": "Sleep quality affects recovery, mood, and metabolic processes."
+        },
+        "Low Carb Diet Duration": {
+            "definition": "Length of time following a low carbohydrate diet.",
+            "explanation": "This relates to dietary habits that can influence metabolism and energy sources."
+        },
+        "Keto Diet Duration": {
+            "definition": "Length of time following a ketogenic diet.",
+            "explanation": "A keto diet focuses on high fats and low carbs, potentially affecting metabolic states like ketosis."
+        },
+        "VAT": {
+            "definition": "Visceral Adipose Tissue, referring to the fat stored around internal organs in the abdominal area.",
+            "explanation": "VAT indicates the amount of fat in the abdominal cavity, which is linked to potential metabolic health risks such as inflammation and insulin resistance. Keeping it low is often associated with better overall health, but without a specific reference range or value, the status cannot be assessed."
         }
     },
     "Reproductive Hormones": {
@@ -477,6 +557,139 @@
         "Hepatic Function Test (LFT)": {
             "definition": "A Hepatic Function Test, also known as a Liver Function Test (LFT), is a group of blood tests that measure enzymes, proteins, and other substances to assess liver health and function.",
             "explanation": "This test evaluates the liver's ability to process substances and maintain overall function, which is important for metabolism, detoxification, and nutrient storage."
+        },
+        "Legs Fat Mass": {
+            "definition": "The amount of fat tissue in the legs, as measured by body composition scans",
+            "explanation": "This measures the fat mass in the legs, which can reflect overall body composition and how fat is distributed, potentially relating to mobility and metabolic health. Without a reference range, it's not possible to determine if this is typical."
+        },
+        "Trunk Fat Mass": {
+            "definition": "The amount of fat tissue in the trunk area, as measured by body composition scans",
+            "explanation": "This assesses fat mass in the central body region, which may be linked to factors like core strength and metabolic function. As no reference range is available, status cannot be evaluated."
+        },
+        "Android Fat Mass": {
+            "definition": "The amount of fat tissue in the android region (upper body, around the abdomen), as measured by body composition scans",
+            "explanation": "This indicates fat distribution in the upper body, which can be associated with energy storage and potential health considerations. Without reference data, it's unclear if this falls within expected levels."
+        },
+        "Gynoid Fat Mass": {
+            "definition": "The amount of fat tissue in the gynoid region (lower body, around hips and thighs), as measured by body composition scans",
+            "explanation": "This measures fat in the lower body, which might relate to aspects like hormone balance or physical activity. Since no reference range is given, no assessment of normality can be made."
+        },
+        "Total Fat Mass": {
+            "definition": "The overall amount of fat tissue in the body, as measured by body composition scans",
+            "explanation": "This represents the total fat in the body, which can provide insight into overall composition and wellness. Without a reference range, it's not possible to comment on whether this is within typical values."
+        },
+        "Arms Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the arms, as measured by body composition scans",
+            "explanation": "This evaluates lean mass in the arms, which may indicate strength and physical function. As reference ranges are missing, no determination of typicality can be provided."
+        },
+        "Legs Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the legs, as measured by body composition scans",
+            "explanation": "This measures lean mass in the legs, potentially relating to mobility and endurance. Without reference data, status remains undetermined."
+        },
+        "Trunk Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the trunk area, as measured by body composition scans",
+            "explanation": "This assesses lean mass in the central body, which could be important for posture and core stability. Since no reference range is available, no further evaluation is possible."
+        },
+        "Android Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the android region (upper body), as measured by body composition scans",
+            "explanation": "This indicates lean mass in the upper body, which may support daily activities and metabolism. Lacking reference values, status cannot be assessed."
+        },
+        "Gynoid Lean Mass": {
+            "definition": "The amount of muscle and non-fat tissue in the gynoid region (lower body), as measured by body composition scans",
+            "explanation": "This measures lean mass in the lower body, possibly linked to lower body strength. Without a reference range, it's not possible to determine if this is expected."
+        },
+        "Total Lean Mass": {
+            "definition": "The overall amount of muscle and non-fat tissue in the body, as measured by body composition scans",
+            "explanation": "This represents the total lean body mass, which can reflect muscle health and physical resilience. As no reference range is provided, no status can be assigned."
+        }
+    },
+    "DNA Methylation Tests": {},
+    "Demographics": {
+        "Date Of Birth": {
+            "definition": "The date on which an individual was born, used to determine age and for demographic purposes.",
+            "explanation": "Date of birth is a basic demographic detail that helps identify a person's age and life stage. It is commonly used for administrative, statistical, or personal identification purposes. Note that no reference range exists for this as it is not a diagnostic measure."
+        },
+        "How Old Do You Feel": {
+            "definition": "A subjective measure of perceived age, reflecting how an individual feels in terms of energy, health, or vitality compared to their chronological age.",
+            "explanation": "This indicates a person's self-reported sense of age, which can differ from their actual age and may relate to overall well-being or lifestyle factors. It is not a standard diagnostic test, so no reference range can be applied, and it should not be used to assess health."
+        },
+        "What Is Your Current Civil Status": {
+            "definition": "The legal or social status of an individual's marital or relationship situation, such as single, married, or divorced, which is often used in demographic studies.",
+            "explanation": "Civil status describes a person's relationship status, which can be relevant for social, legal, or demographic analysis. It is not a health-related diagnostic indicator, so no reference range applies, and it does not imply any medical significance."
+        },
+        "Country Of Birth": {
+            "definition": "The country where an individual was born, which is a key demographic factor for understanding cultural, ethnic, or migration backgrounds.",
+            "explanation": "Country of birth provides information about a person's origins, which may influence cultural identity or access to resources. As this is a demographic detail and not a diagnostic test, no reference range exists, and it has no direct health implications."
+        },
+        "Sex": {
+            "definition": "The biological sex assigned at birth, which is a demographic characteristic often used in health and population studies.",
+            "explanation": "Sex indicates the person's biological sex, which can be relevant for demographic analysis, health risk assessments, and personalized care planning. As this is a categorical value, no reference range applies, and it is not evaluated for being above or below any standard."
+        },
+        "Intake Height": {
+            "definition": "A measurement of a person's height, typically recorded during health or demographic assessments to evaluate physical stature.",
+            "explanation": "Intake height measures the vertical length of the body, which is significant for assessing growth, body proportions, and overall physical health in demographic contexts. Without a reference range, it is not possible to determine if this value is above or below typical standards."
+        },
+        "Intake Weight": {
+            "definition": "A measurement of a person's weight, often collected to understand body mass in relation to demographics and health.",
+            "explanation": "Intake weight measures the total body mass, which is important for evaluating nutritional status, body composition, and potential health risks in demographic profiles. Since no reference range is available, it cannot be assessed as above or below normal levels. These are general observations and not diagnostic."
+        },
+        "Measured Date": {
+            "definition": "The date on which measurements or data were recorded, serving as a timestamp for demographic or health information.",
+            "explanation": "Measured date indicates when the data was collected, which is significant for tracking the timing of demographic records and ensuring accuracy in longitudinal studies. This is not a measurable value with a reference range, so it is not evaluated for status."
+        }
+    },
+    "Psychological Well-Being": {
+        "Frequency of Feeling Stressed": {
+            "definition": "This measures how often an individual experiences feelings of stress or difficulty coping with life's demands, which can be part of assessing overall psychological well-being.",
+            "explanation": "This indicator helps gauge the frequency of stress, which is a common emotional response to life's challenges. It can provide insight into daily mental load and emotional resilience, though it's based on self-report and should be considered in a broader context."
+        },
+        "Frequency of Feeling Anxious": {
+            "definition": "This measures how often an individual experiences feelings of anxiety or difficulty coping with life's demands, contributing to an understanding of emotional health within psychological well-being.",
+            "explanation": "This indicator assesses the occurrence of anxiety, which is a normal reaction to stress but can affect focus and daily functioning if frequent. It's useful for reflecting on emotional states over time."
+        },
+        "Frequency of Feeling Happy or Unable to Cope": {
+            "definition": "This measures how often an individual experiences feelings of happiness or struggles with coping, potentially indicating aspects of positive emotions and resilience in psychological well-being.",
+            "explanation": "This indicator explores the presence of positive emotions like happiness alongside any difficulties in coping, which can highlight aspects of emotional balance. Without a clear reference range, interpretation is limited, but infrequent positive feelings may suggest areas for reflection."
+        }
+    },
+    "Lifestyle And Physical Habits": {
+        "Days of Moderate or Vigorous Physical Activities": {
+            "definition": "The number of days in the last 30 days on which moderate or vigorous physical activities (excluding walking) were performed for more than 10 minutes at a time.",
+            "explanation": "This measures the frequency of engaging in activities that elevate heart rate and build endurance, which can contribute to cardiovascular health and overall fitness."
+        },
+        "Days of Walking for at Least 10 Minutes": {
+            "definition": "The number of days in the last 30 days on which walking was performed for at least 10 minutes at a time.",
+            "explanation": "This measures how often walking occurs as a form of physical activity, which can support heart health, maintain mobility, and promote mental well-being."
+        },
+        "Daily Walking Time": {
+            "definition": "The average amount of time spent walking every day.",
+            "explanation": "This measures daily engagement in walking, a simple form of exercise that can aid in maintaining a healthy weight, improving circulation, and reducing stress."
+        },
+        "Average Hours of Sleep Per Night": {
+            "definition": "The average number of hours slept over a 24-hour period.",
+            "explanation": "This measures the quantity of sleep, which plays a key role in physical recovery, cognitive function, and emotional balance."
+        },
+        "Typical Night's Sleep Quality": {
+            "definition": "The overall quality of a typical night's sleep during the past 4 weeks.",
+            "explanation": "This assesses the perceived quality of sleep, which can influence daily energy levels, mood, and ability to function effectively."
+        }
+    },
+    "Lipid Panel": {
+        "Total Cholesterol": {
+            "definition": "Total cholesterol measures the overall amount of cholesterol in the blood, including LDL, HDL, and other types, which comes from diet and the liver.",
+            "explanation": "Total cholesterol indicates the combined levels of different cholesterol types in the blood, which is significant for assessing heart health and the risk of cardiovascular issues."
+        },
+        "HDL Cholesterol": {
+            "definition": "HDL cholesterol, often called 'good' cholesterol, is a type of lipoprotein that helps remove other forms of cholesterol from the bloodstream.",
+            "explanation": "HDL cholesterol helps transport cholesterol away from arteries and back to the liver, playing a key role in reducing the risk of heart-related concerns."
+        },
+        "LDL Cholesterol": {
+            "definition": "LDL cholesterol, often referred to as 'bad' cholesterol, is a lipoprotein that can build up in the walls of blood vessels, potentially affecting heart health.",
+            "explanation": "LDL cholesterol is significant because high levels may contribute to plaque buildup in arteries, which is linked to cardiovascular health."
+        },
+        "Triglycerides": {
+            "definition": "Triglycerides are a type of fat in the blood that the body uses for energy, derived from food and stored for later use.",
+            "explanation": "Triglycerides provide energy to the body but high levels can be associated with factors like diet and can impact heart health when elevated."
         }
     }
 }
