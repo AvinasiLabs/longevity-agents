@@ -33,6 +33,24 @@ SYS_ANALYZER = '''**Role:** You are an AI assistant designed to help users under
 **Tone:** Be informative, objective, empathetic, and cautious. Avoid sensational or alarming language. Focus on clarifying the provided data.'''
 
 
+SYS_FORM_ANALYZER = '''**Role:** You are an AI assistant designed to help user identify their healthy risk, make explain and interpret findings, according to the questionnaire information.
+
+**Core Task:**
+- Receive Input
+- Parse & Identify
+- Explain the Test
+- Interpret Findings
+- Structure Output
+
+**CRITICAL SAFETY INSTRUCTIONS & BOUNDARIES:**
+- DO NOT PROVIDE A MEDICAL DIAGNOSIS
+- DO NOT PROVIDE MEDICAL ADVICE
+- DO NOT ACT AS A SUBSTITUTE FOR A HEALTHCARE PROFESSIONAL
+- Handle Sensitive Information Appropriately
+
+**Tone:** Be informative, objective, empathetic, and cautious. Avoid sensational or alarming language. Focus on clarifying the provided data.'''
+
+
 class Classification(BaseTemplate):
     _template = '''Task: Analyze the provided diagnostic results and classify the test indicators according to the given major diagnostic categories.
 
@@ -186,6 +204,70 @@ Note: Ensure all test indicators are processed, new sub-items are relevant to th
     major_cate: str
     sub_items: str
     diagno_res: str
+
+
+    def extract(self, content):
+        pattern = r"(?<=```JSON)[\s\S]*(?=```)"
+        res = re.findall(pattern, content, re.I)
+        if res:
+            res = res[-1]
+            try:
+                res = json5.loads(res)
+                return res
+            except Exception as err:
+                raise ValueError(f'Extracting major categories fails:\n{repr(err)}')
+        else:
+            try:
+                res = json5.loads(content)
+                return res
+            except Exception as err:
+                raise ValueError('Empty answer when extracting major categories.')
+
+
+class FormAnalysis(BaseTemplate):
+    _template = '''According to the health questionnaire filled out by a user, which includes their basic information, medical history, exercise habits, sleep patterns, diet, and medication use, your task is to:
+
+1. Identify Explicit and Additional Health Risks: 
+  - Ensure all identified health risks (both explicit and inferred) are relevant and reasonably deduced from the information in the questionnaire.
+  - Review the questionnaire and identify any health risks that the user has explicitly mentioned, such as diagnosed conditions (e.g., diabetes, hypertension) or reported symptoms (e.g., chronic fatigue, shortness of breath).
+  - Analyze the user’s reported lifestyle, diet, exercise, sleep, and other information to identify any potential health risks that are not explicitly mentioned (e.g., risk of obesity inferred from a sedentary lifestyle and high sugar intake).
+2. Provide Details for Explicit Risks: For each explicitly mentioned health risk, include:
+  - Name: The name of the health risk.
+  - Explanation: A clear explanation of why it is a health risk.
+  - Suggestions: Provide specific, actionable suggestions tailored to the user’s information. Suggestions should not be null unless no lifestyle, diet, or exercise changes are applicable (though this is rare, as the goal is to offer coping measures).
+
+
+Health Questionnaire:
+{questionnaire}
+
+Important Note: Do not provide any medical or medication advice. Your suggestions must focus solely on lifestyle, diet, and exercise adjustments.
+
+Output Format: Structure your response in the following JSON format:
+```JSON
+{{
+  "provided": [
+    {{
+      "name": "<health_risk_name>",
+      "explanation": "<significance_explanation>",
+      "suggestions": "<lifestyle_diet_exercise_suggestions>"
+    }},
+    ...
+  ],
+  "additional": [
+    {{
+      "name": "<health_risk_name>",
+      "explanation": "<significance_explanation>",
+      "suggestions": "<lifestyle_diet_exercise_suggestions>"
+    }},
+    ...
+  ]
+}}
+```
+
+"provided": Contains health risks explicitly mentioned by the user in the questionnaire. If no such risks are mentioned, this list can be empty.
+"additional": Contains additional health risks identified by you based on the analysis of the questionnaire data. If no additional risks are found, this list can be empty.'''
+
+    questionnaire: str
 
 
     def extract(self, content):
