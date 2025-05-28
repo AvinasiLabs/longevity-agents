@@ -359,6 +359,10 @@
         "BMD Total": {
             "definition": "Total Bone Mineral Density, representing the overall mineral content in bone tissue across the body.",
             "explanation": "This provides an overall assessment of bone mineral density, which can reflect general bone strength and health."
+        },
+        "Bmd Trunk Ribs Spine": {
+            "definition": "Bone Mineral Density (BMD) for the trunk, ribs, and spine, which measures the mineral content in these areas and is inferred to indicate bone strength in the central body regions.",
+            "explanation": "BMD for the trunk, ribs, and spine evaluates the density of minerals in these central bones, which is important for assessing overall skeletal support and potential vulnerability."
         }
     },
     "Metabolic Indicators": {
@@ -604,76 +608,6 @@
         }
     },
     "DNA Methylation Tests": {},
-    "Demographics": {
-        "Date Of Birth": {
-            "definition": "The date on which an individual was born, used to determine age and for demographic purposes.",
-            "explanation": "Date of birth is a basic demographic detail that helps identify a person's age and life stage. It is commonly used for administrative, statistical, or personal identification purposes. Note that no reference range exists for this as it is not a diagnostic measure."
-        },
-        "How Old Do You Feel": {
-            "definition": "A subjective measure of perceived age, reflecting how an individual feels in terms of energy, health, or vitality compared to their chronological age.",
-            "explanation": "This indicates a person's self-reported sense of age, which can differ from their actual age and may relate to overall well-being or lifestyle factors. It is not a standard diagnostic test, so no reference range can be applied, and it should not be used to assess health."
-        },
-        "What Is Your Current Civil Status": {
-            "definition": "The legal or social status of an individual's marital or relationship situation, such as single, married, or divorced, which is often used in demographic studies.",
-            "explanation": "Civil status describes a person's relationship status, which can be relevant for social, legal, or demographic analysis. It is not a health-related diagnostic indicator, so no reference range applies, and it does not imply any medical significance."
-        },
-        "Country Of Birth": {
-            "definition": "The country where an individual was born, which is a key demographic factor for understanding cultural, ethnic, or migration backgrounds.",
-            "explanation": "Country of birth provides information about a person's origins, which may influence cultural identity or access to resources. As this is a demographic detail and not a diagnostic test, no reference range exists, and it has no direct health implications."
-        },
-        "Sex": {
-            "definition": "The biological sex assigned at birth, which is a demographic characteristic often used in health and population studies.",
-            "explanation": "Sex indicates the person's biological sex, which can be relevant for demographic analysis, health risk assessments, and personalized care planning. As this is a categorical value, no reference range applies, and it is not evaluated for being above or below any standard."
-        },
-        "Intake Height": {
-            "definition": "A measurement of a person's height, typically recorded during health or demographic assessments to evaluate physical stature.",
-            "explanation": "Intake height measures the vertical length of the body, which is significant for assessing growth, body proportions, and overall physical health in demographic contexts. Without a reference range, it is not possible to determine if this value is above or below typical standards."
-        },
-        "Intake Weight": {
-            "definition": "A measurement of a person's weight, often collected to understand body mass in relation to demographics and health.",
-            "explanation": "Intake weight measures the total body mass, which is important for evaluating nutritional status, body composition, and potential health risks in demographic profiles. Since no reference range is available, it cannot be assessed as above or below normal levels. These are general observations and not diagnostic."
-        },
-        "Measured Date": {
-            "definition": "The date on which measurements or data were recorded, serving as a timestamp for demographic or health information.",
-            "explanation": "Measured date indicates when the data was collected, which is significant for tracking the timing of demographic records and ensuring accuracy in longitudinal studies. This is not a measurable value with a reference range, so it is not evaluated for status."
-        }
-    },
-    "Psychological Well-Being": {
-        "Frequency of Feeling Stressed": {
-            "definition": "This measures how often an individual experiences feelings of stress or difficulty coping with life's demands, which can be part of assessing overall psychological well-being.",
-            "explanation": "This indicator helps gauge the frequency of stress, which is a common emotional response to life's challenges. It can provide insight into daily mental load and emotional resilience, though it's based on self-report and should be considered in a broader context."
-        },
-        "Frequency of Feeling Anxious": {
-            "definition": "This measures how often an individual experiences feelings of anxiety or difficulty coping with life's demands, contributing to an understanding of emotional health within psychological well-being.",
-            "explanation": "This indicator assesses the occurrence of anxiety, which is a normal reaction to stress but can affect focus and daily functioning if frequent. It's useful for reflecting on emotional states over time."
-        },
-        "Frequency of Feeling Happy or Unable to Cope": {
-            "definition": "This measures how often an individual experiences feelings of happiness or struggles with coping, potentially indicating aspects of positive emotions and resilience in psychological well-being.",
-            "explanation": "This indicator explores the presence of positive emotions like happiness alongside any difficulties in coping, which can highlight aspects of emotional balance. Without a clear reference range, interpretation is limited, but infrequent positive feelings may suggest areas for reflection."
-        }
-    },
-    "Lifestyle And Physical Habits": {
-        "Days of Moderate or Vigorous Physical Activities": {
-            "definition": "The number of days in the last 30 days on which moderate or vigorous physical activities (excluding walking) were performed for more than 10 minutes at a time.",
-            "explanation": "This measures the frequency of engaging in activities that elevate heart rate and build endurance, which can contribute to cardiovascular health and overall fitness."
-        },
-        "Days of Walking for at Least 10 Minutes": {
-            "definition": "The number of days in the last 30 days on which walking was performed for at least 10 minutes at a time.",
-            "explanation": "This measures how often walking occurs as a form of physical activity, which can support heart health, maintain mobility, and promote mental well-being."
-        },
-        "Daily Walking Time": {
-            "definition": "The average amount of time spent walking every day.",
-            "explanation": "This measures daily engagement in walking, a simple form of exercise that can aid in maintaining a healthy weight, improving circulation, and reducing stress."
-        },
-        "Average Hours of Sleep Per Night": {
-            "definition": "The average number of hours slept over a 24-hour period.",
-            "explanation": "This measures the quantity of sleep, which plays a key role in physical recovery, cognitive function, and emotional balance."
-        },
-        "Typical Night's Sleep Quality": {
-            "definition": "The overall quality of a typical night's sleep during the past 4 weeks.",
-            "explanation": "This assesses the perceived quality of sleep, which can influence daily energy levels, mood, and ability to function effectively."
-        }
-    },
     "Lipid Panel": {
         "Total Cholesterol": {
             "definition": "Total cholesterol measures the overall amount of cholesterol in the blood, including LDL, HDL, and other types, which comes from diet and the liver.",

@@ -14,7 +14,7 @@ CACHE_DIR = RELATIVE_PATH.joinpath('.cache')
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 
-OCR_API = 'http://173.185.79.174:44568/v1/ocr'
+OCR_API = f'{os.getenv("OCR_ENDPOINT", "http://localhost:44568")}/v1/ocr'
 
 
 class AnalyzerTaskConfig(TaskConfig):

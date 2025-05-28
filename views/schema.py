@@ -1,7 +1,7 @@
 from typing import Optional, Union, Literal, List
 from datetime import datetime, timezone, timedelta
 from pydantic import BaseModel, ConfigDict, Field
-
+from fastapi import UploadFile
 
 
 class BaseRequest(BaseModel):
