@@ -65,31 +65,33 @@ class PaperRetrieve:
         return resp['result']
     
 
-    def parse(self, documents:List[dict], domain:str, endpoint:str):
+    def parse(self, documents:List[dict], domain:str, endpoint:str) -> tuple[list[tuple[str, str]], dict[int, str]]:
         result = defaultdict(list)
         url_map = dict()
         index = 0
         for record in documents:
             file_name = record['file_name']
-            index = record['agg_index']
+            agg_index = record['agg_index']
             text = record['text']
             # Replace url
+            index = 0
             file_md5 = generate_md5(Path(file_name).stem)
             raw_urls = re.findall(r"images/[a-fA-F0-9]{64}\.jpg", text)
             img_md5s = re.findall(r"images/([a-fA-F0-9]{64})\.jpg", text)
-            new_urls = [f'{endpoint}/v1/storage/image?domain={domain}&file={file_md5}&image={image_md5}' for image_md5 in img_md5s]
+            new_urls = [f'{endpoint}/api/v1/storage/image?domain={domain}&file={file_md5}&image={image_md5}' for image_md5 in img_md5s]
             for i, url in enumerate(new_urls):
-                url_sub = f'<image>{index}</image>'
+                url_sub = f'<image>{file_md5}-{agg_index}-{index}</image>'
                 text = re.sub(raw_urls[i], url_sub, text)
-                url_map[index] = url
+                url_map[f"{file_md5}-{agg_index}-{index}"] = url
                 index += 1
-            result[file_name].append((index, text))
+            result[file_name].append((agg_index, text))
         for k, v in result.items():
+            # Sort file text by agg_index
             result[k] = sorted(v)
             result[k] = '\n\n'.join([ele[1] for ele in v])
 
-        template = '---\n**File Name**: {file_name}\n**Reference**:\n{text}\n---\n\n'
-        result = [(file_name, template.format(file_name=file_name, text=text)) for file_name, text in result.items()]
+        template = '---\n**File Name**: {file_name}\n\n**Reference**:\n\n{text}\n\n---\n\n'
+        result = [template.format(file_name=file_name, text=text) for file_name, text in result.items()]
         return result, url_map
 
     

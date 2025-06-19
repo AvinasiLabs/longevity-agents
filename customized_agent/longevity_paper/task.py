@@ -178,7 +178,7 @@ class PaperChatbot:
                             yield temp
                             temp = ''
                         elif re.findall(r'<[\s\S]{5}', temp):
-                            index_str = re.search(r'<image>(\d+)?</image>', temp)
+                            index_str = re.search(r'<image>([a-fA-F0-9]{64}-[0-9]+-[0-9]+)?</image>', temp)
                             if not index_str:
                                 if '<image' not in temp:
                                     yield temp
@@ -186,8 +186,7 @@ class PaperChatbot:
                             else:
                                 index = index_str.group(1)
                                 if index:
-                                    index = int(index)
-                                    temp = re.sub(index_str.group(), f'![]({url_map[index]})', temp)
+                                    temp = re.sub(index_str.group(), f'\n\n![]({url_map[index]})\n\n', temp)
                                     yield temp
                                     temp = ''
                                 else:
